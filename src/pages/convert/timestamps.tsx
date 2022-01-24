@@ -1,0 +1,236 @@
+import { useCallback, useMemo, useRef, useState } from "react";
+import Head from "next/head";
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web'; 
+
+import { FaAngleDoubleRight, FaClock, FaRetweet } from 'react-icons/fa'
+import { FcCalendar } from 'react-icons/fc'
+
+import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from '../styles/timestamps';
+import Input from '../../components/Input'; 
+import { zonedTimeToUtc, format, formatInTimeZone } from "date-fns-tz";
+import { formatRelative, parseISO } from "date-fns";
+import Select from "../../components/Select";
+
+interface ITimestampsInput{
+  type?:string;
+  value?:number;
+  toGmt?:string;
+  toTimezone?:string;
+  relative?:string;
+}
+
+interface IDateInput{
+  day?:number;
+  month?:number;
+  year?:number;
+  hour?:number;
+  minute?:number;
+  second?:number;
+  timestamp?:number;
+  timestamp_miliseconds?:number;
+  toGmt?:string;
+  toTimezone?:string;
+}
+
+const Timestamps: React.FC = () => {
+  const dateNow = useMemo(() => new Date(Date.now()), [])
+
+  const [timestampToDate, setTimestampToDate] = useState<ITimestampsInput>({
+    value:dateNow.getTime(),
+  })
+
+  const [dateToTimestamps, setDateToTimestamps] = useState<IDateInput>({
+    day: dateNow.getDate(),
+    month: dateNow.getMonth()+1,
+    year: dateNow.getFullYear(),
+    hour: dateNow.getHours() % 12 || 12,
+    minute: dateNow.getMinutes(),
+    second: dateNow.getSeconds(),
+    timestamp: Math.round(dateNow.getTime()/1000),
+    timestamp_miliseconds: dateNow.getTime(),
+  })
+
+  const [error, setError] = useState(false)
+
+  const formRef = useRef<FormHandles>(null);
+
+  const timestampHandleSubmit = useCallback((data) => {
+    setError(false)
+
+    try{
+      let { timestamp } = data;
+      const formatter = new Intl.RelativeTimeFormat();
+
+      if(timestamp===""){
+        throw new Error(`Invalid date: ${timestamp}`)
+      }
+
+      let type = '';
+
+      if(timestamp.length<12 && timestamp.length>0){
+        type = 'seconds';
+        timestamp = Number(timestamp*1000)
+      };
+
+      if(timestamp.length>=12 && timestamp.length<15) type = 'miliseconds';
+
+      if(timestamp.length>15) {
+        type = 'microseconds';
+        timestamp = Number(timestamp/1000);
+      };
+
+      const toTimezone = new Date(Number(timestamp));
+      const toGmt = toTimezone.toUTCString();
+      const deltaDays = (toTimezone.getTime() - Date.now()) / (1000 * 3600 * 24);
+
+      let relative = '';
+
+      if(deltaDays>-365 && deltaDays<365){
+        relative = formatter.format(Math.round(deltaDays), 'days')
+
+      } else{
+        relative = formatter.format(Math.round(deltaDays/365), 'years')
+      }
+
+      setTimestampToDate({
+        value:timestamp,
+        type,
+        toGmt,
+        toTimezone:format(toTimezone, 'PPPPpppp'),
+        relative
+      })
+
+    }catch(error){
+      setError(true)
+      console.log(error);
+    }
+
+  },[timestampToDate])
+
+  const dateHandleSubmit = useCallback((data) => {
+    const { year, month, day, hour, minute, second } = data;
+
+    const date = new Date(year, month, day, hour, minute, second)
+
+    console.log(date)
+
+    setDateToTimestamps({
+      year, 
+      month, 
+      day, 
+      hour, 
+      minute, 
+      second,
+      timestamp: Math.round(date.getTime()/1000),
+      timestamp_miliseconds:date.getTime(),
+      toGmt:date.toUTCString(),
+      toTimezone:format(date, 'PPPPpppp'),
+
+    })
+    
+    
+  },[dateToTimestamps])
+
+
+
+  return <>
+    <Head>
+      <title>Timestamps</title>
+    </Head>
+    <Container>
+      <h1>Convert Epoch Timestamp</h1>
+      <Section>
+        <h2><FaClock/> Timestamp to human-friendly date:</h2>
+        <Content>
+          <Insert>
+            <Form id={'timestamps-form'} onSubmit={timestampHandleSubmit} ref={formRef} initialData={ {timestamp: timestampToDate.value} }>
+              <Field>
+                <p>Unix Timestamp</p>
+                <Input type="number" name="timestamp" placeholder="Unix Timestamp" />
+              </Field>
+              <ConvertButton type="submit">
+                <FaRetweet/>
+              </ConvertButton>
+            </Form>
+          </Insert>
+            <FaAngleDoubleRight/>
+          <Result>
+            {error ? <p>ERROR: Invalid Timestamp</p> : <>
+              <p>Assuming that this timestamp is in <span>{timestampToDate.type}:</span></p>
+              <p><span>GMT:</span> {timestampToDate.toGmt} </p>
+              <p><span>Your time zone:</span> {timestampToDate.toTimezone}</p>
+              <p><span>Relative:</span> {timestampToDate.relative}</p>
+            </>}
+          </Result>
+        </Content>
+
+      </Section>
+      <Divider/>
+      <Section>
+        <h2> <FcCalendar/> Human-friendly date and time (24h) to timestamps:</h2>
+        <Content>
+          <Insert>
+            <Form 
+              id={'date-form'}
+              onSubmit={dateHandleSubmit} 
+              ref={formRef} 
+              initialData={{
+                year:dateToTimestamps.year,
+                month:dateToTimestamps.month,
+                day:dateToTimestamps.day,
+                hour:dateToTimestamps.hour,
+                minute:dateToTimestamps.minute,
+                second:dateToTimestamps.second,
+              }}
+            >
+              <Field id="year">
+                <p>Year</p>
+                <Input type="number" name="year" placeholder="Year" />
+              </Field>
+
+              <Field>
+                <p>Mon</p>
+                <Input type="number" name="month" placeholder="Month" />
+              </Field>
+              <Field>
+                <p>Day</p>
+                <Input type="number" name="day" placeholder="Day" />
+              </Field>
+              <Field>
+                <p>Hr</p>
+                <Input type="number" name="hour" placeholder="Hours" />
+              </Field>
+              <Field>
+                <p>Min</p>
+                <Input type="number" name="minute" placeholder="Minutes" />
+              </Field>
+              <Field>
+                <p>Sec</p>
+                <Input type="number" name="second" placeholder="Seconds" />
+              </Field>
+              
+
+
+
+              <ConvertButton type="submit"><FaRetweet/></ConvertButton>
+            </Form>
+          </Insert>
+            <FaAngleDoubleRight/>
+          <Result>
+            {error ? <p>ERROR: Invalid Timestamp</p> : <>
+              <p><span>Epoch timestamp:</span> {dateToTimestamps.timestamp}</p>
+              <p><span>Timestamp in milliseconds:</span> {dateToTimestamps.timestamp_miliseconds} </p>
+              <p><span>Date and time (GMT):</span> {dateToTimestamps.toGmt}</p>
+              <p><span>Date and time (your time zone):</span> {dateToTimestamps.toTimezone}</p>
+            </>}
+          </Result>
+        </Content>
+
+      </Section>
+
+    </Container>
+  </>;
+}
+
+export default Timestamps;
