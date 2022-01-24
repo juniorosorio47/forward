@@ -8,9 +8,7 @@ import { FcCalendar } from 'react-icons/fc'
 
 import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from '../styles/timestamps';
 import Input from '../../components/Input'; 
-import { zonedTimeToUtc, format, formatInTimeZone } from "date-fns-tz";
-import { formatRelative, parseISO } from "date-fns";
-import Select from "../../components/Select";
+import { format } from "date-fns-tz";
 
 interface ITimestampsInput{
   type?:string;
@@ -34,7 +32,13 @@ interface IDateInput{
 }
 
 const Timestamps: React.FC = () => {
-  const dateNow = useMemo(() => new Date(Date.now()), [])
+  const dateNow = useMemo(() => new Date(Date.now()), []);
+  const [errorTimestamp, setErrorTimestamp] = useState(false);
+  const [errorDate, setErrorDate] = useState(false);
+  const [error, setError] = useState(false);
+  const [showResultTimestamp, setShowResultTimestamp] = useState(false);
+  const [showResultDate, setShowResultDate] = useState(false);
+  const formRef = useRef<FormHandles>(null);
 
   const [timestampToDate, setTimestampToDate] = useState<ITimestampsInput>({
     value:dateNow.getTime(),
@@ -51,12 +55,8 @@ const Timestamps: React.FC = () => {
     timestamp_miliseconds: dateNow.getTime(),
   })
 
-  const [error, setError] = useState(false)
-
-  const formRef = useRef<FormHandles>(null);
-
   const timestampHandleSubmit = useCallback((data) => {
-    setError(false)
+    setErrorTimestamp(false)
 
     try{
       let { timestamp } = data;
@@ -101,38 +101,46 @@ const Timestamps: React.FC = () => {
         relative
       })
 
+      setShowResultTimestamp(true);
+
     }catch(error){
-      setError(true)
+      setErrorTimestamp(true)
+      setShowResultTimestamp(true);
       console.log(error);
     }
 
   },[timestampToDate])
 
   const dateHandleSubmit = useCallback((data) => {
-    const { year, month, day, hour, minute, second } = data;
+    setErrorDate(false)
+    try{
+      const { year, month, day, hour, minute, second } = data;
 
-    const date = new Date(year, month, day, hour, minute, second)
+      const date = new Date(year, month, day, hour, minute, second)
 
-    console.log(date)
+      setDateToTimestamps({
+        year, 
+        month, 
+        day, 
+        hour, 
+        minute, 
+        second,
+        timestamp: Math.round(date.getTime()/1000),
+        timestamp_miliseconds:date.getTime(),
+        toGmt:date.toUTCString(),
+        toTimezone:format(date, 'PPPPpppp'),
 
-    setDateToTimestamps({
-      year, 
-      month, 
-      day, 
-      hour, 
-      minute, 
-      second,
-      timestamp: Math.round(date.getTime()/1000),
-      timestamp_miliseconds:date.getTime(),
-      toGmt:date.toUTCString(),
-      toTimezone:format(date, 'PPPPpppp'),
+      })
+      
+      setShowResultDate(true)
 
-    })
-    
-    
+    }catch(error){
+      setErrorDate(true)
+      setShowResultDate(true);
+      console.log(error);
+
+    }
   },[dateToTimestamps])
-
-
 
   return <>
     <Head>
@@ -154,15 +162,17 @@ const Timestamps: React.FC = () => {
               </ConvertButton>
             </Form>
           </Insert>
-            <FaAngleDoubleRight/>
-          <Result>
-            {error ? <p>ERROR: Invalid Timestamp</p> : <>
-              <p>Assuming that this timestamp is in <span>{timestampToDate.type}:</span></p>
-              <p><span>GMT:</span> {timestampToDate.toGmt} </p>
-              <p><span>Your time zone:</span> {timestampToDate.toTimezone}</p>
-              <p><span>Relative:</span> {timestampToDate.relative}</p>
-            </>}
-          </Result>
+          {showResultTimestamp && <>
+              <FaAngleDoubleRight/>
+            <Result>
+              {error ? <p>ERROR: Invalid Timestamp</p> : <>
+                <p>Assuming that this timestamp is in <span>{timestampToDate.type}:</span></p>
+                <p><span>GMT:</span> {timestampToDate.toGmt} </p>
+                <p><span>Your time zone:</span> {timestampToDate.toTimezone}</p>
+                <p><span>Relative:</span> {timestampToDate.relative}</p>
+              </>}
+            </Result>
+          </>}
         </Content>
 
       </Section>
@@ -216,15 +226,17 @@ const Timestamps: React.FC = () => {
               <ConvertButton type="submit"><FaRetweet/></ConvertButton>
             </Form>
           </Insert>
-            <FaAngleDoubleRight/>
-          <Result>
-            {error ? <p>ERROR: Invalid Timestamp</p> : <>
-              <p><span>Epoch timestamp:</span> {dateToTimestamps.timestamp}</p>
-              <p><span>Timestamp in milliseconds:</span> {dateToTimestamps.timestamp_miliseconds} </p>
-              <p><span>Date and time (GMT):</span> {dateToTimestamps.toGmt}</p>
-              <p><span>Date and time (your time zone):</span> {dateToTimestamps.toTimezone}</p>
-            </>}
-          </Result>
+          {showResultDate && <>
+              <FaAngleDoubleRight/>
+            <Result>
+              {error ? <p>ERROR: Invalid Timestamp</p> : <>
+                <p><span>Epoch timestamp:</span> {dateToTimestamps.timestamp}</p>
+                <p><span>Timestamp in milliseconds:</span> {dateToTimestamps.timestamp_miliseconds} </p>
+                <p><span>Date and time (GMT):</span> {dateToTimestamps.toGmt}</p>
+                <p><span>Date and time (your time zone):</span> {dateToTimestamps.toTimezone}</p>
+              </>}
+            </Result>
+          </>}
         </Content>
 
       </Section>

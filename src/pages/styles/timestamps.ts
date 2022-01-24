@@ -1,41 +1,49 @@
-import styled from 'styled-components';
-import { shade } from 'polished';
+import styled, { keyframes } from 'styled-components';
+import { shade, lighten } from 'polished';
 
+
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
 
 
 export const Container = styled.main`
-  padding:24px;
-  /* border: 2px solid red; */
+    padding:24px;
 
-  >div{
-      display:grid;
-      grid-gap:20px;
-      margin-top: 60px;
-  }
+    >h1 {
+        color:${lighten(0.1,"#ff9000")};
+    }
 
+    >div{
+        display:grid;
+        grid-gap:20px;
+        margin-top: 60px;
+    }
 `;
 
 export const Section = styled.div`
-    /* background-color:red; */
     >h2 {
         display:flex;
         align-items: center;
         >svg{
             margin-right:10px;
         }
-
     }
 `;
 
 export const Insert = styled.div`
-    /* border: 2px solid blue; */
-    
     display:flex;
     justify-content:flex-start;
     align-items:center;
     text-align: center;
-    /* max-width:850px; */
-
 
     #timestamps-form{
         display:grid;
@@ -47,18 +55,15 @@ export const Insert = styled.div`
         grid-template-rows:1fr;
 
         >div{
-            min-width:250px;
+            min-width:200px;
             display:flex;
             justify-content: center;
             align-items:center;
-            
-
 
             >div>input{
                 height:30px;
             }
         }
-
     }
 
     #date-form{
@@ -79,21 +84,16 @@ export const Insert = styled.div`
                 width:40px;
                 height:30px;
             }
-
         }
 
         div:first-child{
-            
             width:80px;
-
 
             div>input{
                 width:70px;
             }
 
         }
-
-
     }
 `;
 
@@ -143,10 +143,8 @@ export const Field = styled.div`
         background-color:transparent;
         border:none;
         color:white;
-
         padding:0;
 
-    
         >input{
             font-size:16px;
             height:25px;
@@ -170,14 +168,13 @@ export const Field = styled.div`
 `;
 
 export const Result = styled.div`
-    /* border: 2px solid green; */
+    animation: ${appearFromLeft} 1s;
     flex:4;
     background:#333333;
     padding:10px;
     border-radius:8px;
     min-width:580px;
     max-width:600px;
-
     margin-top: 10px;
     
     >p{
@@ -197,10 +194,9 @@ export const Result = styled.div`
 
 export const Content = styled.div`
     padding:20px;
-    /* border: 2px solid gray; */
+    height:100px;
     display:flex;
     max-width:100vw;
-    
     grid-gap:1px;
     justify-content: flex-start;
     align-items: center;
@@ -211,6 +207,7 @@ export const Content = styled.div`
         margin-left: 30px;
         margin-top: 12px;
         margin-right: 20px;
+        animation: ${appearFromLeft} 1s;
     }
 
 `;
@@ -218,7 +215,7 @@ export const Content = styled.div`
 export const Divider = styled.div`
     width:1200px;
     height:2px;
-    background:white;
+    background:#ff9000;
     border-radius: 5px;
     opacity: 0.3;
 `;
