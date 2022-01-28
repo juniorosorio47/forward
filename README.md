@@ -1,2 +1,3 @@
-# forward-convert-timestamp
-This app converts timestamps to human-friendly dates.
+# Forward
+This is my portfolio app that will have some example projects.
+
