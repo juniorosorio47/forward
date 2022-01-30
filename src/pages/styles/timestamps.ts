@@ -5,6 +5,8 @@ import { shade, lighten } from 'polished';
 const appearFromLeft = keyframes`
     from{
         opacity: 0;
+        
+        
         transform: translateX(-50px);
     }
 
@@ -14,27 +16,64 @@ const appearFromLeft = keyframes`
     }
 `;
 
+const appearFromTop = keyframes`
+    from{
+        >svg{
+            transform: rotate(90deg);
+        }
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+
 
 export const Container = styled.main`
-    padding:24px;
+    position: absolute;
+    padding:20px;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 0.6fr 0.2fr 0.8fr;
+    place-items: flex-start;
+
+    @media only screen and (max-width: 768px) {
+        grid-gap: 50px;
+        grid-template-rows: 0.2fr 1.2fr 0.2fr 0.8fr;
+
+        h1{
+            font-size:24px;
+            width:100%;
+        }
+
+        h2{
+            font-size:18px;
+            width:100%;
+        }
+    }
+
 
     >h1 {
         color:${lighten(0.1,"#ff9000")};
-    }
-
-    >div{
-        display:grid;
-        grid-gap:20px;
-        margin-top: 60px;
+        margin-bottom:20px;
     }
 `;
 
 export const Section = styled.div`
+    display:grid;
+    grid-gap:30px;
+    height:200px;
+
     >h2 {
         display:flex;
-        align-items: center;
+        align-items: top;
         >svg{
             margin-right:10px;
+            /* background:red; */
+            font-size:24px;
         }
     }
 `;
@@ -54,6 +93,10 @@ export const Insert = styled.div`
         width:auto;
         grid-template-rows:1fr;
 
+        >button{
+            align-self:flex-end;
+        }
+
         >div{
             min-width:200px;
             display:flex;
@@ -61,18 +104,40 @@ export const Insert = styled.div`
             align-items:center;
 
             >div>input{
-                height:30px;
+                height:40px;
+                background:#121212;
+                color:#fff;
             }
         }
+
+        
     }
 
     #date-form{
         display:grid;
-        grid-template-columns:1.2fr .7fr .7fr .7fr .7fr .7fr .5fr;
-        grid-gap:8px;
-        justify-content: flex-start;
-        align-items:center;
-        max-width:800px;
+        grid-template-rows: 1fr;
+        grid-template-areas: 
+            "year mon day hour min sec button";
+        grid-gap:5px;
+        place-items:center;
+
+        >button{
+            align-self:flex-end;
+        }
+
+        @media only screen and (max-width: 668px) {
+            grid-template-rows: 1fr 0.5fr;
+            grid-template-areas: 
+                "year mon day hour min sec";
+
+            >button{
+                align-items:flex-start;
+                margin:0;
+                grid-column: 6/7;
+                grid-row: 2;
+            }
+            
+        }
 
         div>div{
             display:flex;
@@ -81,8 +146,9 @@ export const Insert = styled.div`
             
             >input{
                 text-align:center;
-                width:40px;
-                height:30px;
+                width:50px;
+                height:40px;
+                background:#121212;
             }
         }
 
@@ -100,10 +166,8 @@ export const Insert = styled.div`
 
 
 export const ConvertButton = styled.button`
-    align-self:flex-end;
-    width:35px;
-    height:35px;
-    margin-top: 10px;
+    width:50px;
+    height:40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,22 +177,23 @@ export const ConvertButton = styled.button`
     padding:5px;
     color: #333333;
     transition: background-color 0.2s;
-
-    >svg{
-        width:100px;
-    }
+    font-size:32px;
+    color:#fff;
+    margin-left:10px;
 
     &:hover {
         background: ${shade(0.2, '#ff9000')};
     }
 `
+
 export const Field = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width:50px;
+    width:auto;
+
 
     >p{
         font-size:12px;
@@ -147,11 +212,11 @@ export const Field = styled.div`
 
         >input{
             font-size:16px;
+            width:300px;
             height:25px;
             border: 1px solid #fff;
             border-radius: 5px;
             text-align: center;
-            
         }
     }
 
@@ -168,15 +233,13 @@ export const Field = styled.div`
 `;
 
 export const Result = styled.div`
+
     animation: ${appearFromLeft} 1s;
-    flex:4;
     background:#333333;
     padding:10px;
     border-radius:8px;
-    min-width:580px;
-    max-width:600px;
     margin-top: 10px;
-    
+
     >p{
         font-weight:300;
         font-size:14px;
@@ -194,12 +257,22 @@ export const Result = styled.div`
 
 export const Content = styled.div`
     padding:20px;
-    height:100px;
+    height:auto;
+    width:auto;
+
+    flex:1;
     display:flex;
     max-width:100vw;
-    grid-gap:1px;
+    grid-gap:2px;
     justify-content: flex-start;
     align-items: center;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        place-items: flex-start;
+        height:auto;
+        padding:2px;
+    }
 
     >svg{
         font-size:60px;
@@ -207,14 +280,22 @@ export const Content = styled.div`
         margin-left: 30px;
         margin-top: 12px;
         margin-right: 20px;
+        
+        
+        @media only screen and (max-width: 768px) {
+            display:none;
+            
+        }
+
         animation: ${appearFromLeft} 1s;
     }
 
 `;
 
 export const Divider = styled.div`
-    width:1200px;
+    width:100%;
     height:2px;
+    margin: 30px 0px;
     background:#ff9000;
     border-radius: 5px;
     opacity: 0.3;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: absolute;
+  padding-top:20px;
   top: 0;
   left: 0;
   height: 100%;
@@ -13,12 +14,21 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: 768px) {
+    height: auto;
+    >h1 {
+      font-size:24px;
+    }
+  }
+
+
+
   #delete{
     color: ${lighten(0.1, 'red')};
   }
 
   >h1 {
-
+    margin-top:10px;
     margin-bottom:10px;
   }
 
@@ -26,23 +36,26 @@ export const Container = styled.div`
     margin-bottom: 15px;
     font-size:12px;
     font-weight: medium;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   >div{
-
-    width:auto;
-    height:auto;
+    padding:20px;
     display:grid;
+
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
     justify-content:center;
-    grid-gap:50px;
+    grid-gap:20px;
+
+    @media only screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+      place-items: center;
+    }
   }
 `;
 
 export const CalculatorBody = styled.div`
-  box-sizing: border-box;
   width:320px;
   height:auto;
   max-height:480px;
@@ -60,7 +73,6 @@ export const CalculatorBody = styled.div`
 `;
 
 export const CalculatorInput = styled.div`
-  box-sizing: border-box;
   
   text-align:right;
   height:auto;
@@ -93,7 +105,7 @@ export const CalculatorInput = styled.div`
 
     padding:0;
     text-align:right;
-    box-sizing: border-box;
+
     padding:5px;
     font-size: 18px;
 
@@ -192,7 +204,7 @@ export const History = styled.div`
   }
 
   >div{
-    box-sizing: border-box;
+
     overflow:auto;
     padding-right:10px;
     top: 0;
@@ -213,7 +225,7 @@ export const History = styled.div`
     overflow:auto;
     width:100%;
     
-    box-sizing: border-box;
+
 
 
 

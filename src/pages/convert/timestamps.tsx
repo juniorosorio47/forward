@@ -155,7 +155,16 @@ const Timestamps: React.FC = () => {
             <Form id={'timestamps-form'} onSubmit={timestampHandleSubmit} ref={formRef} initialData={ {timestamp: timestampToDate.value} }>
               <Field>
                 <p>Unix Timestamp</p>
-                <Input type="number" name="timestamp" placeholder="Unix Timestamp" />
+                <Input 
+                  type="text" 
+                  name="timestamp" 
+                  placeholder="Unix Timestamp"
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }} 
+                />
               </Field>
               <ConvertButton type="submit">
                 <FaRetweet/>
@@ -196,28 +205,84 @@ const Timestamps: React.FC = () => {
             >
               <Field id="year">
                 <p>Year</p>
-                <Input type="number" name="year" placeholder="Year" />
+                <Input 
+                  type="text" 
+                  name="year" 
+                  placeholder="Year" 
+                  max="4"
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      console.log();
+                      event.preventDefault();
+                    }
+                  }} 
+                />
               </Field>
 
               <Field>
                 <p>Mon</p>
-                <Input type="number" name="month" placeholder="Month" />
+                <Input 
+                  type="text" 
+                  name="month" 
+                  placeholder="Month" 
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                />
               </Field>
               <Field>
                 <p>Day</p>
-                <Input type="number" name="day" placeholder="Day" />
+                <Input 
+                  type="text" 
+                  name="day" 
+                  placeholder="Day" 
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                />
               </Field>
               <Field>
                 <p>Hr</p>
-                <Input type="number" name="hour" placeholder="Hours" />
+                <Input 
+                  type="text" 
+                  name="hour" 
+                  placeholder="Hours" 
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                />
               </Field>
               <Field>
                 <p>Min</p>
-                <Input type="number" name="minute" placeholder="Minutes" />
+                <Input 
+                  type="text"  
+                  name="minute" 
+                  placeholder="Minutes" 
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                />
               </Field>
               <Field>
                 <p>Sec</p>
-                <Input type="number" name="second" placeholder="Seconds" />
+                <Input 
+                  type="text" 
+                  name="second" 
+                  placeholder="Seconds" 
+                  onKeyPress={(event) => {
+                    if (!/^([0-9])$/.test(event.key)) {
+                      event.preventDefault();
+                    }
+                  }}
+                />
               </Field>
               
 
