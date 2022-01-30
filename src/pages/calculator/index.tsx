@@ -28,26 +28,31 @@ const Calculator: React.FC = () => {
     return numbers;
   }, [] );
 
-
-  const calculate = useCallback( ()=>{
+  // Calculate and set result values.
+  const calculate = useCallback( (): void => {
+    // Check if calc variable is empty or the last calc item is an operator and return empty.
     if(calc==='' || operators.includes(calc.slice(-1))) return;
     
+    // Set result using javascript eval function.
+    // Eval: evaluates a string expression to a number value.
     setResult(eval(calc).toString());
     
-    
+    // Store calc and result to history
     setHistory([...history, `${calc} = ${result}`]);
     
+    // Set calc with result value.
     setCalc(result);
 
   },[calc]);
 
 
-  const deleteLast = useCallback( ()=>{
-    console.log(calc)
+  // Delete the last calc item
+  const deleteLast = useCallback( (): void=>{
     
-    
+    // Set calc removing the last item.
     setCalc(calc.slice(0, -1));
 
+    // If calc is already empty it sets result to empty and return empty.
     if(calc==='') {
       setResult('');
       
@@ -56,33 +61,38 @@ const Calculator: React.FC = () => {
 
   },[calc]);
 
-  const deleteAll = useCallback( ()=>{
+  // Clear calc and result
+  const clearAll = useCallback( (): void => {
+    // if calc is empty it return empty.
     if(calc==='') return;
 
+    // Set result and calc as empty strings.
     setResult('');
     setCalc('');
   },[calc]);
 
+  // Clear calculator history
   const clearHistory = useCallback( ()=>{
     setHistory([]);
   },[calc]);
 
-  const updateCalc = useCallback( (value)=>{
+  // Update calc and result while the numbers are typed.
+  const updateCalc = useCallback( (value): void => {
 
+    // Check if calc is empty and if the value is an operator or the last value is an operator and return empty.
     if(operators.includes(value) && calc==='' || operators.includes(value) && operators.includes( calc.slice(-1) ) ){
       return;
     }
 
+    // Set calc string adding the value to calc.
     setCalc(calc + value);
 
+    // Check if value is an operator before set result value.
     if(!operators.includes(value)){
       setResult(eval(calc + value).toString());
     }
+
   }, [calc, result])
-
-
-
-
 
   return <Container>
     <Head>
@@ -112,7 +122,7 @@ const Calculator: React.FC = () => {
             <button onClick={() => updateCalc('-')}> - </button>
             <button onClick={() => updateCalc('*')}> x </button>
             <button onClick={() => updateCalc('/')}> / </button>
-            <button onClick={() => deleteAll()}>C</button>
+            <button onClick={() => clearAll()}>C</button>
             <button id="delete" onClick={() => deleteLast()}><FiDelete/></button>
           </CalculatorOperators>
           <CalculatorNumbers>
@@ -151,9 +161,6 @@ const Calculator: React.FC = () => {
       </History>
 
     </div>
-    
-
-
   </Container>;
 }
 

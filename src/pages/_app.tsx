@@ -8,7 +8,7 @@ const theme = {
   },
 };
  
-function ForwardConvert({ Component, pageProps }: AppProps) {
+function Forward({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
@@ -19,4 +19,4 @@ function ForwardConvert({ Component, pageProps }: AppProps) {
   );
 }
  
-export default ForwardConvert;
+export default Forward;
