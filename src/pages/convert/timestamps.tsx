@@ -114,7 +114,10 @@ const Timestamps: React.FC = () => {
   const dateHandleSubmit = useCallback((data) => {
     setErrorDate(false)
     try{
-      const { year, month, day, hour, minute, second } = data;
+      const { year, day, hour, minute, second } = data;
+      
+      let { month } = data;
+      month = month-1;
 
       const date = new Date(year, month, day, hour, minute, second)
 
@@ -285,9 +288,6 @@ const Timestamps: React.FC = () => {
                 />
               </Field>
               
-
-
-
               <ConvertButton type="submit"><FaRetweet/></ConvertButton>
             </Form>
           </Insert>

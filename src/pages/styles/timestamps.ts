@@ -36,6 +36,7 @@ export const Container = styled.main`
     position: absolute;
     padding:20px;
     display:grid;
+    grid-gap:10px;
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 0.6fr 0.2fr 0.8fr;
     place-items: flex-start;
@@ -120,6 +121,7 @@ export const Insert = styled.div`
             "year mon day hour min sec button";
         grid-gap:5px;
         place-items:center;
+        
 
         >button{
             align-self:flex-end;
@@ -140,6 +142,7 @@ export const Insert = styled.div`
         }
 
         div>div{
+            
             display:flex;
             justify-content: center;
             align-items:center;
@@ -153,6 +156,7 @@ export const Insert = styled.div`
         }
 
         div:first-child{
+            
             width:80px;
 
             div>input{
@@ -194,7 +198,6 @@ export const Field = styled.div`
     text-align: center;
     width:auto;
 
-
     >p{
         font-size:12px;
         margin-bottom:5px;
@@ -211,6 +214,7 @@ export const Field = styled.div`
         padding:0;
 
         >input{
+            color:#fff;
             font-size:16px;
             width:300px;
             height:25px;
