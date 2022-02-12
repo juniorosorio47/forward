@@ -1,15 +1,13 @@
-import { v4 as uuidv4 } from 'uuid';
 import Head from "next/head";
+import { useTransition, animated } from 'react-spring';
+import { v4 as uuidv4 } from 'uuid';
 import { useCallback, useEffect, useState } from "react";
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
-import { BiSave } from "react-icons/bi";
-import { AiOutlinePlus, AiOutlineDelete, AiOutlineCheck } from "react-icons/ai";
-import { Checkbox } from "../../components/CheckBox";
-import Input from "../../components/Input";
+import { AiOutlineDelete } from "react-icons/ai";
+import { BsHandIndexThumb } from "react-icons/bs";
 
-import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button } from '../styles/todoapp';
-import { versionMajorMinor } from "typescript";
-import { Form } from '@unform/web';
+import Input from "../../components/Input";
+import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button, EmptyLists } from '../styles/todoapp';
 import ListTitleForm from './components/ListTitleForm';
 
 interface IItem{
@@ -24,69 +22,129 @@ interface IList{
   items:IItem[];
 }
 
-
-
 const TodoApp: React.FC = () => {
+  // Array that contains all the lists, each list has its own TODOs.
   const [lists, setLists] = useState<IList[]>([]);
 
-  const saveListToLocalStorage = useCallback(()=>{
-    localStorage.setItem("lists", JSON.stringify(lists));
+  // Save lists state to browser local storage.
+  const saveLists = useCallback((): void => {
+    setLists([...lists]);
+
+    localStorage.setItem("DoNext@Lists", JSON.stringify(lists));
+
   },[lists])
 
-  useEffect(() =>{
-    const savedLists = localStorage.getItem("lists");
+  // Load lists from local storage if it exists.
+  useEffect((): void =>{
+    // Check if the lists exists on local storage.
+    const savedLists = localStorage.getItem("DoNext@Lists");
     
-    let initialValue = []
+    // Creates a empty initial value for lists state.
+    let initialValue = [];
 
+    // If the lists exists, the initial value will be set.
     if(savedLists){
       initialValue = JSON.parse(savedLists);
     }
-    
-    setLists(initialValue)
+
+    // Set initial value to lists state.
+    setLists(initialValue);
   }, [])
 
-  const createNewList = useCallback(() => {
+  // Creates a new list inside lists state
+  const createNewList = useCallback((): void => {
     
-    const newList = {
+    // Creates a new list structure
+    const newList: IList = {
       id:uuidv4(),
       title:"List name",
       items: [{
-          id:uuidv4(),
-          checked: false,
-          value: "A sample item. Delete it =>"
-        },
-    ]}
+        id:uuidv4(),
+        checked: false,
+        value: "A sample item. Delete it =>"
+      }]
+    };
 
+    // Copy existing lists
     let listsCopy = lists;
 
+    // Add the new list to the array in the first position. The last created list will display first.
     listsCopy.unshift(newList);
-    
-    setLists([...listsCopy])
 
-    saveListToLocalStorage();
+    saveLists();
 
   },[lists])
 
-  const removeList = useCallback(( list_id) => {
+  // Changes list name. It receives the list_id and the new list_title
+  const changeListTitle = useCallback((list_id, list_title)=>{
 
-    
-    const listIndex = lists.findIndex(list => list.id == list_id )
-
-    let listsCopy = lists;
-    listsCopy.splice(listIndex,1)
-      
-    setLists([...listsCopy])
-    saveListToLocalStorage();
-  },[lists])
-
-  const removeItem = useCallback((item_id, list_id) => {
-    
-    const listIndex = lists.findIndex(list => list.id == list_id )
-
-    let selectedList = lists[listIndex];
+    const selectedList = lists.find(list => list.id == list_id);
 
     if(selectedList){
 
+      selectedList.title = list_title;
+      
+      saveLists();
+    }
+  },[lists])
+
+  // Remove a list from the lists array. It receives only the list id.
+  const removeList = useCallback(( list_id: string ) => {
+
+    // Find the list_id index
+    const listIndex = lists.findIndex(list => list.id == list_id )
+
+    // Creates a copy of the lists state
+    let listsCopy = lists;
+
+    // Remove the selected list from listsCopy.
+    listsCopy.splice(listIndex, 1)
+
+    saveLists();
+  },[lists])
+
+  // Add item to a list. Receives the list_id and new item value.
+  const addToList = useCallback((data:any,{ reset }) => {
+    // Clear new item form.
+    reset();
+
+    const { new_item, list_id } = data;
+
+    // Find the list_id index.
+    const listIndex = lists.findIndex(list => list.id == list_id )
+    console.log(new_item, list_id);
+    console.log(listIndex);
+
+    if(listIndex!==-1){
+      // Gets the list from index.
+      let listSelected = lists[listIndex];
+
+      // Create the item structure.
+      const newListItem = {
+        id:uuidv4(),
+        checked: false,
+        value: new_item
+      }
+
+      // Add new item to the list.
+      listSelected.items.push(newListItem);
+
+      saveLists();
+    }
+    
+  },[lists]);
+
+  // Removes item from a list. It receives the item id and the list id.
+  const removeItemFromList = useCallback((item_id, list_id): void => {
+    
+    // Find list_id index 
+    const listIndex = lists.findIndex(list => list.id == list_id);
+
+    // Get the list
+    let selectedList = lists[listIndex];
+
+    // If list exists will remove the item with the item_id
+    if(selectedList){
       selectedList.items.filter((item, index, arr)=>{
 
         if(item.id === item_id){
@@ -94,14 +152,13 @@ const TodoApp: React.FC = () => {
         }
 
         return item;
-
       });
       
-      setLists([...lists])
-      saveListToLocalStorage();
+      saveLists();
     }
   },[lists])
 
+  // Toggle item checked
   const toggleItemChecked = useCallback((item_id, list_id) => {
     
     const selectedList = lists.find(list => list.id == list_id )
@@ -114,50 +171,9 @@ const TodoApp: React.FC = () => {
         }
       });
       
-      setLists([...lists])
-      saveListToLocalStorage();
+      saveLists();
     }
   },[lists])
-
-
-
-  const addToList = useCallback((data:any,{ reset }) => {
-    reset();
-
-    const { new_item, list_id } = data;
-    
-    const listIndex = lists.findIndex(list => list.id == list_id )
-
-    let listSelected = lists[listIndex];
-
-    const newListItem = {
-      id:uuidv4(),
-      checked: false,
-      value: new_item
-    }
-    
-    listSelected.items.push(newListItem);
-
-    setLists([...lists])
-    saveListToLocalStorage();
-    
-  },[lists]);
-
-  const changeListTitle = useCallback((list_id, list_title)=>{
-
-    const selectedList = lists.find(list => list.id == list_id);
-
-    if(selectedList){
-
-      selectedList.title = list_title;
-      
-      setLists([...lists])
-      saveListToLocalStorage();
-
-    }
-  },[lists])
-
-  
 
   return <Container>
     <Head>
@@ -192,7 +208,8 @@ const TodoApp: React.FC = () => {
 
     <Actions> 
       <Button onClick={createNewList}>+ Add List</Button>
-      <span>Press enter after change the list's name to save it.</span>
+      <span>Press ENTER after change the list's name to save it. </span>
+      <span>(In the next version all text in list items will be editable like the title is now)</span>
     </Actions>
 
     <Body>
@@ -212,20 +229,21 @@ const TodoApp: React.FC = () => {
                     {item.checked ? <ImCheckboxChecked color='#007E34'/>:<ImCheckboxUnchecked/>}
                   </div>
                   <p>{item.value}</p>
-                  <DeleteButton onClick={()=>removeItem(item.id, list.id)}><AiOutlineDelete/></DeleteButton>
+                  <DeleteButton onClick={()=>removeItemFromList(item.id, list.id)}><AiOutlineDelete/></DeleteButton>
               </ToDo>
             )): <p>Empty list</p>}
           </ul>
-          <AddToListForm onSubmit={addToList}>
+          <AddToListForm onSubmit={addToList} initialData={{ list_id: list.id}}>
               <Input name="new_item" type="text" placeholder="Add item to list"/>
               <button type="submit">+</button>
-              <Input type="hidden" name="list_id" value={list.id} onChange={()=>{}}/>
+              <Input type="hidden" name="list_id" defaultValue={list.id} />
           </AddToListForm>
         </List>
       )) :
-        <>
-          <h3>Click here to create a new list: <Button onClick={createNewList}>+ Add List</Button></h3>
-        </>}
+        <EmptyLists>
+          <BsHandIndexThumb/>
+          <p>Click here to create a new list. </p>
+        </EmptyLists>}
     </Body>
     
   </Container>;

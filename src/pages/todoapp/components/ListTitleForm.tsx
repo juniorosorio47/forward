@@ -26,7 +26,12 @@ const ListTitleForm: React.FC<IListTitleFormProps> = ({list, onFormSubmit}) => {
     
     const handleSubmit = useCallback((data) =>{
         const {list_id, list_title} = data;
-        console.log('submit',data);
+
+        // Checks if list title changed, if not, it will not send the change to localstorage
+        if(list_title===list.title){
+            console.log('Title did not change')
+            return;
+        }
         
         onFormSubmit(list_id, list_title);
     },[])

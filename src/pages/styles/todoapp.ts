@@ -1,10 +1,39 @@
 import { Form } from '@unform/web';
 import { lighten, shade } from 'polished';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import { animated } from 'react-spring';
 
 interface ToDoProps{
     checked?: true | false,
 }
+
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateX(-50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
+const appearFromBottom = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
 
 export const Container = styled.div`
     position: absolute;
@@ -157,12 +186,30 @@ export const ListTitleForm = styled(Form)`
         width:100%;
         height:100%;
     }
-
-    
-
 `;
 
-export const List = styled.div`
+export const EmptyLists = styled.div`
+    display:flex;
+    width:350px;
+    place-items:baseline;
+    text-align:center;
+    
+    color:#5C325D;
+    animation: ${appearFromLeft} .5s;
+
+    >p{
+        font-weight:500;
+    }
+    >svg{
+        animation: ${appearFromBottom} 1.5s;
+        font-size:24px;
+        margin-right:10px;
+    }
+`;
+
+
+export const List = styled(animated.div)`
+    animation: ${appearFromLeft} 1s;
     padding:0px;
     background:#E7E0E7;
     height:350px;
@@ -323,6 +370,7 @@ export const AddToListForm = styled(Form)`
 
 
 export const ToDo = styled.li<ToDoProps>`
+    animation: ${appearFromBottom} .5s;
     padding:10px;
     display:grid;
     grid-template-columns: 30px 2fr 30px;
@@ -350,8 +398,5 @@ export const ToDo = styled.li<ToDoProps>`
             color:#01C851;
         } 
     `}
-
-   
-
 `;
 
