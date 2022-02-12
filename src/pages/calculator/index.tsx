@@ -36,14 +36,22 @@ const Calculator: React.FC = () => {
     // Set result using javascript eval function.
     // Eval: evaluates a string expression to a number value.
     setResult(eval(calc).toString());
-    
+
+    console.log(history)
+
+    const newHistoryItem = `${calc} = ${result}`;
+
+    let historyCopy = history;
+
+    historyCopy.push(newHistoryItem);
+
     // Store calc and result to history
-    setHistory([...history, `${calc} = ${result}`]);
+    setHistory([...historyCopy]);
     
     // Set calc with result value.
     setCalc(result);
 
-  },[calc]);
+  },[calc, history]);
 
 
   // Delete the last calc item
@@ -59,7 +67,7 @@ const Calculator: React.FC = () => {
       return;
     }
 
-  },[calc]);
+  },[calc, result]);
 
   // Clear calc and result
   const clearAll = useCallback( (): void => {
@@ -69,12 +77,13 @@ const Calculator: React.FC = () => {
     // Set result and calc as empty strings.
     setResult('');
     setCalc('');
-  },[calc]);
+  },[calc, result]);
 
   // Clear calculator history
   const clearHistory = useCallback( ()=>{
     setHistory([]);
-  },[calc]);
+    
+  },[history]);
 
   // Update calc and result while the numbers are typed.
   const updateCalc = useCallback( (value): void => {
@@ -145,7 +154,7 @@ const Calculator: React.FC = () => {
       <History>
         <header>
           <h3>History <span>(Press "=" to save at history)</span></h3>
-          <button key={'clear'} onClick={() => clearHistory()}> <FiTrash2/> </button>
+          <button key={'clear'} onClick={clearHistory}> <FiTrash2/> </button>
         </header>
         <div>
           {history.length>0 ? history.map(item=>{
