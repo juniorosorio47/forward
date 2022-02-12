@@ -2,12 +2,13 @@ import Head from "next/head";
 import { useTransition, animated } from 'react-spring';
 import { v4 as uuidv4 } from 'uuid';
 import { useCallback, useEffect, useState } from "react";
+
 import { ImCheckboxChecked, ImCheckboxUnchecked } from "react-icons/im";
 import { AiOutlineDelete } from "react-icons/ai";
-import { BsHandIndexThumb } from "react-icons/bs";
+import { FaRegHandPointUp, FaRegHandPointDown } from "react-icons/fa";
 
 import Input from "../../components/Input";
-import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button, EmptyLists } from '../styles/todoapp';
+import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button, EmptyLists, Info } from '../styles/todoapp';
 import ListTitleForm from './components/ListTitleForm';
 
 interface IItem{
@@ -58,11 +59,7 @@ const TodoApp: React.FC = () => {
     const newList: IList = {
       id:uuidv4(),
       title:"List name",
-      items: [{
-        id:uuidv4(),
-        checked: false,
-        value: "A sample item. Delete it =>"
-      }]
+      items: []
     };
 
     // Copy existing lists
@@ -179,7 +176,7 @@ const TodoApp: React.FC = () => {
     <Head>
         <title>Do Next</title>
     </Head>
-
+  
     <NavBar> 
       <svg  viewBox="0 0 166 94" xmlns="http://www.w3.org/2000/svg">
         <mask id="path-1-outside-1_21_23" maskUnits="userSpaceOnUse" x="29.2798" y="45.5002" width="128" height="40" fill="black">
@@ -206,11 +203,13 @@ const TodoApp: React.FC = () => {
       <span>List What You Are Going To DoNext</span>
     </NavBar>
 
+    
+
     <Actions> 
       <Button onClick={createNewList}>+ Add List</Button>
-      <span>Press ENTER after change the list's name to save it. </span>
-      <span>(In the next version all text in list items will be editable like the title is now)</span>
     </Actions>
+
+    
 
     <Body>
       {lists.length > 0 ? lists.map(list =>(
@@ -231,7 +230,14 @@ const TodoApp: React.FC = () => {
                   <p>{item.value}</p>
                   <DeleteButton onClick={()=>removeItemFromList(item.id, list.id)}><AiOutlineDelete/></DeleteButton>
               </ToDo>
-            )): <p>Empty list</p>}
+            )): <div>
+
+              <span>Tip: You can edit the list name by clicking it. After editing just press ENTER to save.</span>
+              <p>Empty list, add a new item to the list</p>
+              <FaRegHandPointDown/>
+            </div>
+            }
+            
           </ul>
           <AddToListForm onSubmit={addToList} initialData={{ list_id: list.id}}>
               <Input name="new_item" type="text" placeholder="Add item to list"/>
@@ -241,10 +247,18 @@ const TodoApp: React.FC = () => {
         </List>
       )) :
         <EmptyLists>
-          <BsHandIndexThumb/>
+          <FaRegHandPointUp/>
           <p>Click here to create a new list. </p>
         </EmptyLists>}
     </Body>
+    <Info>
+      <span>Tips:</span>
+      <p>- Create your first list by clicking at Add List button.</p>
+      <p>- Edit the list name by clicking at the list name. Press Enter to save.</p>
+      <p>- Add a new item to the list in the "Add Item to list" input.</p>
+      <p>- Delete items or lists by clicking on trash icon (<AiOutlineDelete color='red'/>)</p>
+
+    </Info>
     
   </Container>;
 }

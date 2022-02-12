@@ -45,6 +45,9 @@ export const Container = styled.div`
     color: #000;
     display:grid;
     grid-template-rows: 120px 40px 1fr;
+    @media ( min-width: 900px ) {
+        grid-template-rows:   100px 40px 1fr 40px;
+    }
     grid-gap:0;
 `;
 
@@ -52,6 +55,9 @@ export const NavBar = styled.nav`
 
     width: 100%;
     height:120px;
+    @media ( min-width: 900px ) {
+        height:100px;
+    }
     background-color: #5C325D;
     border:none;
     text-align:center;
@@ -153,16 +159,11 @@ export const ListTitleForm = styled(Form)`
         -moz-box-shadow: none;
         box-shadow: none;
 
-
         height:100%;
         width:40px;
         font-size:24px;
         display:flex;
         place-items:center;
-
-        
-        
-        
         color:#01C851;
 
         &:hover{
@@ -186,6 +187,37 @@ export const ListTitleForm = styled(Form)`
         width:100%;
         height:100%;
     }
+`;
+
+export const Info = styled.div`
+    display:none;
+
+    @media ( min-width: 900px ) {
+        background:#d4d4d4;
+        color:#5C325D;
+        width:100%;
+        height:40px;
+        padding-left:20px;
+        padding-right:20px;
+        display:flex;
+        justify-content:space-between;
+        place-items:center;
+        
+        >span{
+            font-size:14px;
+            font-weight:500;
+        }
+
+        >p{
+            font-size:10px;
+            display:flex;
+            place-items:center;
+            >svg{
+                font-size:14px;
+
+            }
+        }
+    } 
 `;
 
 export const EmptyLists = styled.div`
@@ -265,6 +297,32 @@ export const List = styled(animated.div)`
         >p{
             margin-top:10px;
 
+        }
+
+        >div{
+            padding:20px;
+            display:flex;
+            flex-direction:column;
+            place-items:center;
+            width:100%;
+            height:100%;
+            text-align:center;
+            color:#8D708E;
+
+            >span{
+                font-size:12px;
+                margin-bottom:20px;
+                opacity:0.8;
+            }
+
+            >p{
+                
+            }
+
+            >svg{
+                font-size:36px;
+                margin-top:20px;
+            }
         }
 
     }
