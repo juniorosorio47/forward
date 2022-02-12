@@ -29,6 +29,7 @@ const TodoApp: React.FC = () => {
 
   // Load lists from local storage if it exists.
   useEffect((): void =>{
+    console.log("Loading lists from local storage")
     // Check if the lists exists on local storage.
     const savedLists = localStorage.getItem("DoNext@Lists");
     
@@ -48,7 +49,7 @@ const TodoApp: React.FC = () => {
   const saveLists = useCallback((newListsState: IList[]): void => {
     setLists([...newListsState]);
 
-    localStorage.setItem("DoNext@Lists", JSON.stringify(lists));
+    localStorage.setItem("DoNext@Lists", JSON.stringify(newListsState));
 
   },[lists])
 
@@ -68,22 +69,33 @@ const TodoApp: React.FC = () => {
     // Add the new list to the array in the first position. The last created list will display first.
     listsCopy.unshift(newList);
 
-    saveLists(listsCopy);
+    saveLists([...listsCopy]);
 
   },[lists])
 
   // Changes list name. It receives the list_id and the new list_title
-  const changeListTitle = useCallback((list_id, list_title)=>{
+  const changeListTitle = useCallback((data)=>{
+
+    
+
+    const {list_id, list_title} = data;
 
     // Find the list_id index
-    let listUpdated = lists.find(list => list.id === list_id )
+    let listIndex = lists.findIndex(list => list.id === list_id )
 
-    console.log(listUpdated)
+    if(list_title===lists[listIndex].title){
+        console.log('Title did not change')
+        return;
+    }
 
-    if(listUpdated){
-      listUpdated.title = list_title;
+    // Copy existing lists
+    let listsCopy = lists;
+
+    if(listIndex>=0){
+      
+      listsCopy[listIndex].title = list_title;
     
-      saveLists(lists);
+      saveLists([...listsCopy]);
     }
 
   },[lists])
@@ -96,11 +108,14 @@ const TodoApp: React.FC = () => {
 
     // Creates a copy of the lists state
     let listsCopy = lists;
+    console.log(listsCopy)
 
     // Remove the selected list from listsCopy.
     listsCopy.splice(listIndex, 1)
 
-    saveLists(listsCopy);
+    console.log('aaaa',listsCopy)
+
+    saveLists([...listsCopy]);
   },[lists])
 
   // Add item to a list. Receives the list_id and new item value.
@@ -126,7 +141,7 @@ const TodoApp: React.FC = () => {
 
       listsCopy[listIndex].items.push(newListItem);
 
-      saveLists(listsCopy);
+      saveLists([...listsCopy]);
     }
     
   },[lists]);
@@ -152,7 +167,7 @@ const TodoApp: React.FC = () => {
         return item;
       });
       
-      saveLists(listsCopy);
+      saveLists([...listsCopy]);
     }
   },[lists])
 
@@ -173,7 +188,7 @@ const TodoApp: React.FC = () => {
         }
       });
       
-      saveLists(listsCopy);
+      saveLists([...listsCopy]);
     }
   },[lists])
 
@@ -221,7 +236,7 @@ const TodoApp: React.FC = () => {
           <List key={list.id}>
             <ListHeader>
               <ListTitleForm list={list} onFormSubmit={changeListTitle}/>
-              <span>({list.items.length} {list.items.length===1?'item':'items'})</span>
+                <span>({list.items.length} {list.items.length===1?'item':'items'})</span>
               <DeleteButton onClick={()=>removeList(list.id)}><AiOutlineDelete/></DeleteButton>
             </ListHeader>
             

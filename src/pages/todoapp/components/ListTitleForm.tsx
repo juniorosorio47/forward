@@ -24,23 +24,11 @@ interface IListTitleFormProps {
 const ListTitleForm: React.FC<IListTitleFormProps> = ({list, onFormSubmit}) => {
     const formRef = useRef(null);
     
-    const handleSubmit = useCallback((data) =>{
-        const {list_id, list_title} = data;
-
-        // Checks if list title changed, if not, it will not send the change to localstorage
-        if(list_title===list.title){
-            console.log('Title did not change')
-            return;
-        }
-        
-        onFormSubmit(list_id, list_title);
-    },[])
-
     return <>
         <StyledListTitleForm 
             autoComplete="off"
             ref={formRef}
-            onSubmit={handleSubmit} 
+            onSubmit={onFormSubmit} 
             initialData={{ list_title: list.title, list_id: list.id}}
         >
             <Input type="text" name="list_title"  defaultValue={list.title} autoComplete="off"/>
