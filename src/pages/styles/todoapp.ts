@@ -101,17 +101,25 @@ export const Body = styled.div`
     height:100%;
     width:100%;
     display:grid;
-    grid-gap:10px;
+    grid-gap:30px;
     padding-top:30px;
     overflow:auto;
     align-items:flex-start;
     justify-content:center;
     background:#fff;
 
-    @media ( min-width: 900px ) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+    @media ( min-width: 960px ) {
+        grid-template-columns: 1fr 1fr;
         padding-top:0px;
-        padding:30px;
+        padding:20px;
+    }
+
+    @media ( min-width: 1280px ) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @media ( min-width: 1600px ) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
     >span{
@@ -125,7 +133,7 @@ export const ListHeader = styled.div`
     grid-template-columns: 1fr 60px auto;
     align-items:center;
     padding-right:10px;
-    background:#5C325D;
+    background:${lighten(0.1, '#5C325D')};
 
     height:60px;
 
@@ -245,7 +253,7 @@ export const List = styled(animated.div)`
     padding:0px;
     background:#E7E0E7;
     height:350px;
-    width:360px;
+    width:320px;
     /* border-radius: 10px; */
     color:#121212;
     display:grid;
@@ -315,13 +323,10 @@ export const List = styled(animated.div)`
                 opacity:0.8;
             }
 
-            >p{
-                
-            }
-
             >svg{
                 font-size:36px;
                 margin-top:20px;
+                opacity:0.5;
             }
         }
 

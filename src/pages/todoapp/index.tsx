@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useTransition, animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { v4 as uuidv4 } from 'uuid';
 import { useCallback, useEffect, useState } from "react";
 
@@ -27,14 +27,6 @@ const TodoApp: React.FC = () => {
   // Array that contains all the lists, each list has its own TODOs.
   const [lists, setLists] = useState<IList[]>([]);
 
-  // Save lists state to browser local storage.
-  const saveLists = useCallback((): void => {
-    setLists([...lists]);
-
-    localStorage.setItem("DoNext@Lists", JSON.stringify(lists));
-
-  },[lists])
-
   // Load lists from local storage if it exists.
   useEffect((): void =>{
     // Check if the lists exists on local storage.
@@ -52,6 +44,14 @@ const TodoApp: React.FC = () => {
     setLists(initialValue);
   }, [])
 
+  // Save lists state to browser local storage.
+  const saveLists = useCallback((newListsState: IList[]): void => {
+    setLists([...newListsState]);
+
+    localStorage.setItem("DoNext@Lists", JSON.stringify(lists));
+
+  },[lists])
+
   // Creates a new list inside lists state
   const createNewList = useCallback((): void => {
     
@@ -68,21 +68,24 @@ const TodoApp: React.FC = () => {
     // Add the new list to the array in the first position. The last created list will display first.
     listsCopy.unshift(newList);
 
-    saveLists();
+    saveLists(listsCopy);
 
   },[lists])
 
   // Changes list name. It receives the list_id and the new list_title
   const changeListTitle = useCallback((list_id, list_title)=>{
 
-    const selectedList = lists.find(list => list.id == list_id);
+    // Find the list_id index
+    let listUpdated = lists.find(list => list.id === list_id )
 
-    if(selectedList){
+    console.log(listUpdated)
 
-      selectedList.title = list_title;
-      
-      saveLists();
+    if(listUpdated){
+      listUpdated.title = list_title;
+    
+      saveLists(lists);
     }
+
   },[lists])
 
   // Remove a list from the lists array. It receives only the list id.
@@ -97,7 +100,7 @@ const TodoApp: React.FC = () => {
     // Remove the selected list from listsCopy.
     listsCopy.splice(listIndex, 1)
 
-    saveLists();
+    saveLists(listsCopy);
   },[lists])
 
   // Add item to a list. Receives the list_id and new item value.
@@ -109,13 +112,11 @@ const TodoApp: React.FC = () => {
 
     // Find the list_id index.
     const listIndex = lists.findIndex(list => list.id == list_id )
-    console.log(new_item, list_id);
-    console.log(listIndex);
+
+    // Creates a copy of the lists state
+    let listsCopy = lists;
 
     if(listIndex!==-1){
-      // Gets the list from index.
-      let listSelected = lists[listIndex];
-
       // Create the item structure.
       const newListItem = {
         id:uuidv4(),
@@ -123,10 +124,9 @@ const TodoApp: React.FC = () => {
         value: new_item
       }
 
-      // Add new item to the list.
-      listSelected.items.push(newListItem);
+      listsCopy[listIndex].items.push(newListItem);
 
-      saveLists();
+      saveLists(listsCopy);
     }
     
   },[lists]);
@@ -137,12 +137,13 @@ const TodoApp: React.FC = () => {
     // Find list_id index 
     const listIndex = lists.findIndex(list => list.id == list_id);
 
-    // Get the list
-    let selectedList = lists[listIndex];
+    // Creates a copy of the lists state
+    let listsCopy = lists;
 
     // If list exists will remove the item with the item_id
-    if(selectedList){
-      selectedList.items.filter((item, index, arr)=>{
+    if(listIndex!==-1){
+
+      listsCopy[listIndex].items.filter((item, index, arr)=>{
 
         if(item.id === item_id){
           arr.splice(index,1)
@@ -151,24 +152,28 @@ const TodoApp: React.FC = () => {
         return item;
       });
       
-      saveLists();
+      saveLists(listsCopy);
     }
   },[lists])
 
   // Toggle item checked
   const toggleItemChecked = useCallback((item_id, list_id) => {
-    
-    const selectedList = lists.find(list => list.id == list_id )
 
-    if(selectedList){
+    // Find list_id index 
+    const listIndex = lists.findIndex(list => list.id == list_id);
 
-      selectedList.items.filter((item, index, arr)=>{
+    // Creates a copy of the lists state
+    let listsCopy = lists;
+
+    if(listIndex!==-1){
+
+      listsCopy[listIndex].items.filter((item, index, arr)=>{
         if(item.id === item_id){
           item.checked = !item.checked;
         }
       });
       
-      saveLists();
+      saveLists(listsCopy);
     }
   },[lists])
 
@@ -206,45 +211,44 @@ const TodoApp: React.FC = () => {
     
 
     <Actions> 
-      <Button onClick={createNewList}>+ Add List</Button>
+      <Button onClick={createNewList}>+ New List</Button>
     </Actions>
 
     
 
     <Body>
       {lists.length > 0 ? lists.map(list =>(
-
-        <List key={list.id}>
-          <ListHeader>
-            <ListTitleForm list={list} onFormSubmit={changeListTitle}/>
-            <span>({list.items.length} {list.items.length===1?'item':'items'})</span>
-            <DeleteButton onClick={()=>removeList(list.id)}><AiOutlineDelete/></DeleteButton>
-          </ListHeader>
-          
-          <ul>
-            {list.items.length>0 ? list.items.map(item =>(
-              <ToDo key={item.id} checked={item.checked}>
-                  <div onClick={()=> toggleItemChecked(item.id, list.id)}>
-                    {item.checked ? <ImCheckboxChecked color='#007E34'/>:<ImCheckboxUnchecked/>}
-                  </div>
-                  <p>{item.value}</p>
-                  <DeleteButton onClick={()=>removeItemFromList(item.id, list.id)}><AiOutlineDelete/></DeleteButton>
-              </ToDo>
-            )): <div>
-
-              <span>Tip: You can edit the list name by clicking it. After editing just press ENTER to save.</span>
-              <p>Empty list, add a new item to the list</p>
-              <FaRegHandPointDown/>
-            </div>
-            }
+          <List key={list.id}>
+            <ListHeader>
+              <ListTitleForm list={list} onFormSubmit={changeListTitle}/>
+              <span>({list.items.length} {list.items.length===1?'item':'items'})</span>
+              <DeleteButton onClick={()=>removeList(list.id)}><AiOutlineDelete/></DeleteButton>
+            </ListHeader>
             
-          </ul>
-          <AddToListForm onSubmit={addToList} initialData={{ list_id: list.id}}>
-              <Input name="new_item" type="text" placeholder="Add item to list"/>
-              <button type="submit">+</button>
-              <Input type="hidden" name="list_id" defaultValue={list.id} />
-          </AddToListForm>
-        </List>
+            <ul>
+              {list.items.length>0 ? list.items.map(item =>(
+                <ToDo key={item.id} checked={item.checked}>
+                    <div onClick={()=> toggleItemChecked(item.id, list.id)}>
+                      {item.checked ? <ImCheckboxChecked color='#007E34'/>:<ImCheckboxUnchecked/>}
+                    </div>
+                    <p>{item.value}</p>
+                    <DeleteButton onClick={()=>removeItemFromList(item.id, list.id)}><AiOutlineDelete/></DeleteButton>
+                </ToDo>
+              )): <div>
+
+                <span>Tip: You can edit the list name by clicking it. After editing just press ENTER to save.</span>
+                <p>Empty list, add a new item:</p>
+                <FaRegHandPointDown/>
+              </div>
+              }
+              
+            </ul>
+            <AddToListForm onSubmit={addToList} initialData={{ list_id: list.id}}>
+                <Input name="new_item" type="text" placeholder="Add item to list" autoComplete="off"/>
+                <button type="submit">+</button>
+                <Input type="hidden" name="list_id" defaultValue={list.id} />
+            </AddToListForm>
+          </List>
       )) :
         <EmptyLists>
           <FaRegHandPointUp/>
@@ -253,7 +257,7 @@ const TodoApp: React.FC = () => {
     </Body>
     <Info>
       <span>Tips:</span>
-      <p>- Create your first list by clicking at Add List button.</p>
+      <p>- Create your first list by clicking at "New List" button.</p>
       <p>- Edit the list name by clicking at the list name. Press Enter to save.</p>
       <p>- Add a new item to the list in the "Add Item to list" input.</p>
       <p>- Delete items or lists by clicking on trash icon (<AiOutlineDelete color='red'/>)</p>

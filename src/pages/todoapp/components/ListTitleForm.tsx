@@ -38,11 +38,12 @@ const ListTitleForm: React.FC<IListTitleFormProps> = ({list, onFormSubmit}) => {
 
     return <>
         <StyledListTitleForm 
+            autoComplete="off"
             ref={formRef}
             onSubmit={handleSubmit} 
             initialData={{ list_title: list.title, list_id: list.id}}
         >
-            <Input type="text" name="list_title"  defaultValue={list.title}/>
+            <Input type="text" name="list_title"  defaultValue={list.title} autoComplete="off"/>
             <Input type="hidden" name="list_id" defaultValue={list.id}/>
         </StyledListTitleForm>
     </>
