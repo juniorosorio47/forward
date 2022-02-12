@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Background from '../components/Background';
 
-import { Container, StartPage, Buttons, Projects } from './styles/home';
+import { Container, StartPage, Buttons, Projects } from './styles';
 
 const Home: React.FC = () => {
 

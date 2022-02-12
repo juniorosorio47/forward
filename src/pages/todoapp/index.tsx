@@ -8,7 +8,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { FaRegHandPointUp, FaRegHandPointDown } from "react-icons/fa";
 
 import Input from "../../components/Input";
-import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button, EmptyLists, Info } from '../styles/todoapp';
+import { Container, NavBar, Body, List, ListHeader, Actions, AddToListForm, ToDo, DeleteButton, Button, EmptyLists, Info } from './styles';
 import ListTitleForm from './components/ListTitleForm';
 
 interface IItem{

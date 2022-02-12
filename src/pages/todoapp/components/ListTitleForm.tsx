@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 
-import { ListTitleForm as StyledListTitleForm } from '../../styles/todoapp';
+import { ListTitleForm as StyledListTitleForm } from '../styles';
 import { BiSave } from "react-icons/bi";
 import Input from '../../../components/Input';
 

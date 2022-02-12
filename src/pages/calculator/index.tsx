@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useCallback, useMemo, useState } from "react";
 import { FiDelete, FiTrash2 } from "react-icons/fi";
 
-import { Container, CalculatorBody, CalculatorInput, CalculatorNumbers, CalculatorOperators, History } from '../styles/calculator';
+import { Container, CalculatorBody, CalculatorInput, CalculatorNumbers, CalculatorOperators, History } from './styles';
 
 const Calculator: React.FC = () => {
   const [calc, setCalc] = useState('');

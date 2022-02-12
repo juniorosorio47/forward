@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-import { Container } from '../styles/galaxy';
+import { Container } from './styles';
 import Earth from "../../components/Earth";
 
 

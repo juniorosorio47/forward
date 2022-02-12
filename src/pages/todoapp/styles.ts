@@ -212,12 +212,12 @@ export const Info = styled.div`
         place-items:center;
         
         >span{
-            font-size:14px;
-            font-weight:500;
+            font-size:16px;
+            font-weight:550;
         }
 
         >p{
-            font-size:10px;
+            font-size:14px;
             display:flex;
             place-items:center;
             >svg{
