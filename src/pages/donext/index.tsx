@@ -222,14 +222,10 @@ const TodoApp: React.FC = () => {
       </svg>
       <span>List What You Are Going To DoNext</span>
     </NavBar>
-
     
-
     <Actions> 
       <Button onClick={createNewList}>+ New List</Button>
     </Actions>
-
-    
 
     <Body>
       {lists.length > 0 ? lists.map(list =>(
