@@ -7,28 +7,30 @@ import { ButtonsContainer, ButtonLink } from '../../pages/styles';
 import Video from '../../components/Video';
 
 interface IProjectProps{
-  position:string,
-  company:string,
-  time:string,
-  description:string,
-  techs:string[]
+  position:string;
+  company:string;
+  time:string;
+  description:string;
+  techs:string[];
+  companyWebSite:string;
 }
 
-const WorkCard: React.FC<IProjectProps> = ({ position, company, time, description, techs }) => {
+const WorkCard: React.FC<IProjectProps> = ({ position, company, time, description, techs, companyWebSite }) => {
   return <>
+  {/* <BackgroundGlass/> */}
     <WorkCardContainer>
-        <h2>{position}</h2>
+        <h1>{position}</h1>
         <h3>{company}</h3>
         <span>{time}</span>
         <p>{description}</p>
         <ul>
           {techs.map((tech) =>(
-            <li>{tech}</li>
+            <li key={tech}>{tech}</li>
           ))}
         </ul>
-        <a href="http://valorosoltd.com" target="_blank">Company website</a>
-        <BackgroundGlass/>
+        <ButtonLink href={companyWebSite} target="_blank">Company website</ButtonLink>
     </WorkCardContainer>
+        
   </>;
 }
 

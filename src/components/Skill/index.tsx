@@ -18,11 +18,11 @@ const Skill: React.FC<ISkillProps> = ({logoSrc, name, yearsOfExperience, color, 
                 <h3><a href={techLink}  target="_blank">{name}</a></h3>
             </Info>
             <YearsOfExperience color={color} years={yearsOfExperience}>
+                
                 <div>
                     <p>{yearsOfExperience} Years</p>
                 </div>
             </YearsOfExperience>
-
         </Container>
     </>;
 }

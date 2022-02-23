@@ -3,7 +3,7 @@ import { BsGithub, BsLink } from 'react-icons/bs';
 import Link from 'next/link';
 
 import { ProjectContainer, BackgroundGlass } from './styles';
-import { ButtonsContainer, ButtonLink } from '../../pages/styles';
+import { ButtonsContainer, ButtonLink, Tag, TagFooter } from '../../pages/styles';
 import Video from '../../components/Video';
 
 interface IProjectProps{
@@ -12,9 +12,10 @@ interface IProjectProps{
   githubLink: string;
   liveLink: string;
   youtubeId: string;
+  tags: string[];
 }
 
-const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, liveLink, youtubeId }) => {
+const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, liveLink, youtubeId, tags }) => {
   return <>
     <ProjectContainer>
         
@@ -24,7 +25,11 @@ const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, 
         
         <h2>{title}</h2>
         <p>{description}</p>
-
+        <TagFooter>
+          {tags.map(item=>(
+            <Tag>{item}</Tag>
+          ))}
+        </TagFooter>
         <ButtonsContainer>
 
           <ButtonLink href={githubLink} target="_blank"> 

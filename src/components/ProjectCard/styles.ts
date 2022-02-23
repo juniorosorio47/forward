@@ -9,9 +9,9 @@ export const BackgroundGlass = styled.div`
     background-repeat: no-repeat;
     z-index:-10;
     width:400px;
-    height:600px;
+    height:580px;
     /* display properties */
-    filter: blur(5px);
+    filter: blur(4px);
     border:solid 5px #121212;
     opacity:0.7;
     border-radius: 10px;
@@ -19,10 +19,12 @@ export const BackgroundGlass = styled.div`
 
 export const ProjectContainer = styled.div`
     width:400px;
-    height:600px;
+    height:auto;
     border-radius: 10px;
     display:grid;
+
     /* background-color:#121212; */
+    grid-template-rows: 230px 40px 160px auto 85px;
 
     >p{
         padding:15px;
@@ -42,6 +44,6 @@ export const ProjectContainer = styled.div`
     >iframe{
         border-radius: 10px;
         width:100%;
-        height:280px;
+        height:100%;
     }
 `;

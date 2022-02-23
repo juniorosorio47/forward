@@ -9,8 +9,8 @@ export const BackgroundGlass = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     z-index:-10;
-    width:400px;
-    height:550px;
+    width:660px;
+    height:450px;
     /* display properties */
     filter: blur(5px);
     border:solid 5px #121212;
@@ -20,19 +20,56 @@ export const BackgroundGlass = styled.div`
 
 export const WorkCardContainer = styled.div`
     padding:25px;
-    width:400px;
-    height:550px;
+    width:660px;
+    min-height:600px;
     border-radius: 10px;
     display:grid;
-    line-height:20px;
+    grid-template-rows: 40px 30px 30px auto auto 50px;
+    grid-gap:20px;
+    align-items:space-between;
+    font-size:14px;
 
-    >a:hover {
-        color:${shade(0.1, '#fff')}
+    background-color:rgba(18,18,18,0.5);
+
+    >a{
+        align-self:flex-end;
+        width:100px;
+    }
+
+    >h3{
+        font-size:18px;
+        font-weight:200;
+    }
+
+    >span{
+        font-size:14px;
+    }
+
+    >p{ 
+        font-weight:200;
+        text-align:justify;
+        font-size:16px;
     }
 
     >ul{ 
-        padding:15px;
         list-style:none;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:40px 40px 40px 40px 40px;
+        border-radius:8px;
+        grid-gap:5px;
+        padding:0;
+
+        >li{
+            display:flex;
+            background-color:rgba(18,18,18,1);
+            border-radius:8px;
+            place-items:center;
+            font-size:16px;
+            line-height:25px;
+            padding:10px;
+            
+        }
     }
    
 `;

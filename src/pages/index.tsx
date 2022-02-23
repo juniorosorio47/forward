@@ -5,9 +5,11 @@ import { GiSkills } from 'react-icons/gi';
 import { SiAboutdotme } from 'react-icons/si';
 import { MdWorkOutline } from 'react-icons/md';
 import { IoMdCode } from 'react-icons/io';
+import { BiMailSend } from 'react-icons/bi';
+import { FaLinkedinIn  } from 'react-icons/fa';
 
 import Background from '../components/Background';
-import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences } from './styles';
+import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from './styles';
 import ProjectCard from '../components/ProjectCard';
 import Skill from '../components/Skill';
 import WorkCard from '../components/WorkCard';
@@ -18,32 +20,6 @@ const Home: React.FC = () => {
   const workExperiencesRef = useRef(null);
   const aboutMeRef = useRef(null);
 
-  const workExperiencesList = useMemo( ()=>{
-    return [
-      {
-        position:'Global IT Support',
-        company:'Valoroso LTD',
-        time:'April 2019 - Today',
-        description:'Currently working at the company Valoroso - VOTT Platform Creating Video Experiences. Working with servers support and making improvements for servers management and monitoring, using the following programming languages and tools:',
-        techs:['Python', 'Javascript', 'NodeJS', 'Ubuntu', 'Zabbix', 'Grafana', 'Kibana', 'Docker'],
-      },
-      {
-        position:'Global IT Support',
-        company:'Valoroso LTD',
-        time:'April 2019 - Today',
-        description:'Currently working at the company Valoroso - VOTT Platform Creating Video Experiences. Working with servers support and making improvements for servers management and monitoring, using the following programming languages and tools:',
-        techs:['Python', 'Javascript', 'NodeJS', 'Ubuntu', 'Zabbix', 'Grafana', 'Kibana', 'Docker'],
-      },
-      {
-        position:'Global IT Support',
-        company:'Valoroso LTD',
-        time:'April 2019 - Today',
-        description:'Currently working at the company Valoroso - VOTT Platform Creating Video Experiences. Working with servers support and making improvements for servers management and monitoring, using the following programming languages and tools:',
-        techs:['Python', 'Javascript', 'NodeJS', 'Ubuntu', 'Zabbix', 'Grafana', 'Kibana', 'Docker'],
-      },
-    ]
-  },[])
-
   const projectsList = useMemo( ()=>{
     return [
       {
@@ -52,6 +28,7 @@ const Home: React.FC = () => {
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/donext',
         liveLink:'/donext',
         youtubeId:"pu01yqBIBlE",
+        tags:['NextJS', 'ReactJS', 'Javascript', 'Web Storage API', 'React Spring']
       },
       {
         title:"Timestamps Converter",
@@ -59,23 +36,40 @@ const Home: React.FC = () => {
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/convert',
         liveLink:'/convert/timestamps',
         youtubeId:"pu01yqBIBlE",
+        tags:['NextJS', 'ReactJS', 'Javascript','React Spring']
+      },
+      {
+        title:"Calculator with history",
+        description:"This app is a simple calculator that register the history at the aplication state.",
+        githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/calculator',
+        liveLink:'/calculator',
+        youtubeId:"pu01yqBIBlE",
+        tags:['NextJS', 'ReactJS', 'Javascript']
+      },
+      {
+        title:"This Portfolio",
+        description:"This portfolio is made in NextJS. It contains all the example projects on different pages, at the same NextJS server.",
+        githubLink:'https://github.com/juniorosorio47/forward',
+        liveLink:'/',
+        youtubeId:"pu01yqBIBlE",
+        tags:['NextJS', 'ReactJS', 'Web Storage API', 'React Spring', 'Three JS', 'Javascript']
       },
     ]
   },[])
 
-  const skillsList = useMemo( ()=>{
+  const skillsList = useMemo(() => {
     return [
       {
         logoSrc:"/javascript-icon.svg",
         name:"Javascript",
-        yearsOfExperience:3,
+        yearsOfExperience:4,
         color:"#F0DB4F",
         techLink:"https://nodejs.org",
       },
       {
         logoSrc:"/reactjs-icon.svg" ,
         name:"React JS" ,
-        yearsOfExperience:3,
+        yearsOfExperience:4,
         color:"#00D8FF",
         techLink:"https://reactjs.org",
       },
@@ -89,14 +83,14 @@ const Home: React.FC = () => {
       {
         logoSrc:"/nodejs-icon.svg" ,
         name:"Node JS" ,
-        yearsOfExperience:3,
+        yearsOfExperience:4,
         color:"#8CC84B",
         techLink:"https://nodejs.org",
       },
       {
         logoSrc:"/python-icon.svg" ,
         name:"Python" ,
-        yearsOfExperience:2,
+        yearsOfExperience:3,
         color:"#356B99",
         techLink:"https://python.org",
       },
@@ -107,6 +101,27 @@ const Home: React.FC = () => {
         color:"#1396C3",
         techLink:"https://docker.com",
       }
+    ]
+  },[])
+
+  const workExperiencesList = useMemo( ()=>{
+    return [
+      {
+        position:'Global IT Support',
+        company:'Valoroso LTD',
+        time:'April 2019 - Today',
+        description:'Currently working at the company Valoroso - VOTT Platform Creating Video Experiences. Working with servers support and making improvements for servers management and monitoring, using the following programming languages and tools:',
+        techs:['React', 'Javascript', 'NodeJS', 'Python', 'Ubuntu', 'Zabbix', 'Grafana', 'Kibana', 'Docker'],
+        companyWebSite:"http://valorosoltd.com"
+      },
+      {
+        position:'Internship',
+        company:'ITP - Itaipu Technological Park',
+        time:'October 2018 - April 2019',
+        description:'Internship at the Latin American Center for Open Technologies - CELTAB. Working with full stack software development, with the following languages and tools:',
+        techs:['React', 'React Native', 'Javascript', 'NodeJS', 'Ubuntu',  'Python', 'MongoDB', 'PostgreSQL'],
+        companyWebSite:"https://www.pti.org.br"
+      },
     ]
   },[])
 
@@ -130,24 +145,26 @@ const Home: React.FC = () => {
         <p>Thinking Forward!</p>
         <ButtonsContainer>
           <ButtonLink onClick={()=>goToSection(projectsRef)}> <IoMdCode/> Projects</ButtonLink>
-          <ButtonLink onClick={()=>goToSection(skillsRef)}> <GiSkills/> Skills</ButtonLink>
+          <ButtonLink onClick={()=>goToSection(skillsRef)}> <GiSkills/> {`Skills & XP`}</ButtonLink>
           <ButtonLink onClick={()=>goToSection(aboutMeRef)}> <SiAboutdotme /> About Me</ButtonLink>
         </ButtonsContainer>
       </StartPage>
       <Projects ref={projectsRef}>
         <SectionHeader>
           <h1> <IoMdCode/> Projects</h1>
-          <p>These are some example projects that I made:</p>
+          <p>These are some sample projects that I made:</p>
         </SectionHeader>
         <main>
-          {projectsList.map(({title, description, githubLink, liveLink, youtubeId})=>(
+          {projectsList.map(({title, description, githubLink, liveLink, youtubeId, tags}, index)=>(
 
             <ProjectCard 
+              key={index}
               title={title}
               description={description}
               githubLink={githubLink}
               liveLink={liveLink}
               youtubeId={youtubeId}
+              tags={tags}
             />
             
           ))}
@@ -167,13 +184,15 @@ const Home: React.FC = () => {
           <h1> <GiSkills/> Skills {'&'} XP</h1>
           <p>These are my main skills:</p>
         </SectionHeader>
-        <div id="skillsHeader">
-          <p>Technologies</p> 
-          <p>Years of experience</p>
-        </div>
-        <div>
-          {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink})=>(
+        
+        <main>
+          <div id="skillsHeader">
+            <p>Technologies</p> 
+            <p>Years of experience</p>
+          </div>
+          {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink}, index)=>(
             <Skill 
+              key={index}
               logoSrc={logoSrc}
               name={name}
               yearsOfExperience={yearsOfExperience}
@@ -181,22 +200,24 @@ const Home: React.FC = () => {
               techLink={techLink}
             />
           ))}
-        </div>
+        </main>
       </Skills>
 
       <WorkExperiences ref={workExperiencesRef}>
         <SectionHeader>
-            <h1> <MdWorkOutline/> Working Experiences</h1>
-            <p>These are my work experiences:</p>
+            <h2> <MdWorkOutline/> Working Experiences</h2>
+            <p>These are my most relevant working experiences:</p>
         </SectionHeader>
         <main>
-          {workExperiencesList.map(({position, company, time, description, techs})=>(
+          {workExperiencesList.map(({position, company, time, description, techs, companyWebSite}, index)=>(
             <WorkCard 
+              key={index}
               position={position}
               company={company}
               time={time}
               description={description}
               techs={techs}
+              companyWebSite={companyWebSite}
             />
           ))}
         </main>
@@ -208,6 +229,54 @@ const Home: React.FC = () => {
           <h1> <SiAboutdotme/> About Me</h1>
           <p>Something about me:</p>
         </SectionHeader>
+        <main>
+            <Profile>
+              <img src="/profile.png" alt="Profile" />
+              <h2>Dari Osorio Junior</h2>
+              <span>Full Stack Developer</span>
+              <div>
+                <span>Educational Background</span>
+                <div> 
+                  <h3>Alura <a href="/" target="_blank">(Certification Link)</a> </h3>
+                  <p>Qualification in Front-end Development</p>
+                  <span>2018-2019</span>
+                </div>
+                <div> 
+                  <h3>Uninassal</h3>
+                  <p>Technologist in Systems Analysis</p>
+                  <span>2021-2022 (Not finished)</span>
+                </div>
+              </div>
+
+            </Profile>
+            <Description>
+              <h1>I am a Full-Stack Developer!</h1>
+
+              <main>
+                <p>
+                  I'm a full-stack developer with experience in Javascript, React, React Native and Python. I really like programming, I always find a way to add programming in the companies I worked, for example, I currently work in a server support position, here I made internal systems to facilitate the work of the persons on the company. 
+                </p>
+                <p>I'm looking for a place to work with software development, where I can work full-time programming.</p>
+              </main>
+              <div>
+                <h2>Get in touch:</h2>
+                <ButtonsContainer>
+                  <ButtonLink href="https://www.linkedin.com/in/dari-osorio-junior-developer/" target="_blank"> 
+                    <FaLinkedinIn/> 
+                    LinkedIn
+                  </ButtonLink>
+                  <ButtonLink href="mailto:juniorosorio47@gmail.com" target="_blank"> 
+                    <BiMailSend/> 
+                    E-mail
+                  </ButtonLink>
+                  <ButtonLink href="https://github.com/juniorosorio47" target="_blank"> 
+                    <BsGithub/> 
+                    Github
+                  </ButtonLink>
+                </ButtonsContainer>
+              </div>
+            </Description>
+        </main>
       </AboutMe>
       
     </Container>
