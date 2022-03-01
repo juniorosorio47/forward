@@ -4,7 +4,7 @@ import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 
 import Skill from "../../components/Skill";
 import WorkCard from "../../components/WorkCard";
-import { Container, Info, PersonalDetails, WorkingExp, EducationalBackground, Skills, ExportButton } from './styles';
+import { Container, Info, PersonalDetails, WorkingExp, EducationalBackground, Skills, ExportButton } from '../../styles/resume/styles';
 import { FaFileExport } from "react-icons/fa";
 
 const Resume: React.FC = () => {

@@ -10,7 +10,7 @@ import { FaLinkedinIn  } from 'react-icons/fa';
 import { RiProfileLine  } from 'react-icons/ri';
 
 import Background from '../components/Background';
-import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from './styles';
+import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from '../styles/portfolio/styles';
 import ProjectCard from '../components/ProjectCard';
 import Skill from '../components/Skill';
 import WorkCard from '../components/WorkCard';

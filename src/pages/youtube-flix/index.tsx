@@ -4,7 +4,7 @@ import { FaPlay, FaSearch } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import Video from '../../components/Video';
-import { Container, NavBar, HomePageHeader, Main, Card, CardContent, CardFooter, SearchForm, Category } from './styles';
+import { Container, NavBar, HomePageHeader, Main, Card, CardContent, CardFooter, SearchForm, Category } from '../../styles/youtube-flix/styles';
 import Input from "../../components/Input";
 
 const YoutubeFlix: React.FC = () => {

@@ -6,7 +6,7 @@ import { Form } from '@unform/web';
 import { FaAngleDoubleRight, FaClock, FaRetweet } from 'react-icons/fa'
 import { FcCalendar } from 'react-icons/fc'
 
-import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from './styles';
+import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from '../../styles/convert/styles';
 import Input from '../../components/Input'; 
 import { format } from "date-fns-tz";
 
