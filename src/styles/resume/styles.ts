@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
-  font-family:'Arial', sans-serif;
+  font-family:'Spartan', sans-serif;
   position: absolute;
   top: 0;
   left:0;

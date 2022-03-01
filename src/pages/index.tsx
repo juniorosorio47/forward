@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import Head from "next/head";
+import Image from 'next/image';
 import { BsGithub } from 'react-icons/bs';
 import { GiSkills } from 'react-icons/gi';
 import { SiAboutdotme } from 'react-icons/si';
@@ -9,11 +10,17 @@ import { BiMailSend } from 'react-icons/bi';
 import { FaLinkedinIn  } from 'react-icons/fa';
 import { RiProfileLine  } from 'react-icons/ri';
 
+//@ts-ignore
+import profile from "../../public/profile.png";
+//@ts-ignore
+import logo from "../../public/logo-white.svg";
+
+
 import Background from '../components/Background';
-import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from '../styles/portfolio/styles';
 import ProjectCard from '../components/ProjectCard';
 import Skill from '../components/Skill';
 import WorkCard from '../components/WorkCard';
+import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from '../styles/portfolio/styles';
 
 const Home: React.FC = () => {
   const projectsRef = useRef(null);
@@ -62,57 +69,57 @@ const Home: React.FC = () => {
   const skillsList = useMemo(() => {
     return [
       {
-        logoSrc:"/javascript-icon.svg",
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/javascript-icon.svg",
         name:"Javascript",
         yearsOfExperience:4,
         color:"#F0DB4F",
         techLink:"https://nodejs.org",
       },
       {
-        logoSrc:"/reactjs-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/reactjs-icon.svg" ,
         name:"React JS" ,
         yearsOfExperience:4,
         color:"#00D8FF",
         techLink:"https://reactjs.org",
       },
       {
-        logoSrc:"/reactjs-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/reactjs-icon.svg" ,
         name:"React Native" ,
         yearsOfExperience:2,
         color:"#61DAFB",
         techLink:"https://reactnative.dev",
       },
       {
-        logoSrc:"/nodejs-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/nodejs-icon.svg" ,
         name:"Node JS" ,
         yearsOfExperience:4,
         color:"#8CC84B",
         techLink:"https://nodejs.org",
       },
       {
-        logoSrc:"/python-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/python-icon.svg" ,
         name:"Python" ,
         yearsOfExperience:3,
         color:"#356B99",
         techLink:"https://python.org",
       },
       {
-        logoSrc:"/java-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/java-icon.svg" ,
         name:"Java" ,
         yearsOfExperience:2,
         color:"#0D8AC7",
         techLink:"https://java.com",
       },
       {
-        logoSrc:"/docker-icon.svg" ,
+        logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/docker-icon.svg" ,
         name:"Docker" ,
         yearsOfExperience:2,
         color:"#1396C3",
         techLink:"https://docker.com",
-      }
+      },
+      
     ]
   },[])
-
   const workExperiencesList = useMemo( ()=>{
     return [
       {
@@ -178,9 +185,15 @@ const Home: React.FC = () => {
 
   return <Container>
       <Background />
+      <Head>
+        <title>Dari Osorio Junior</title>
+      </Head>
       <StartPage>
         <Logo>
-          <img src="/logo-white.svg" alt="logo" />
+          <img 
+            src='https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/logo-white.svg' 
+            alt="logo" 
+          />
         </Logo>
         <main>
           <h1>Dari Osorio Junior</h1>
@@ -277,13 +290,16 @@ const Home: React.FC = () => {
         </SectionHeader>
         <main>
             <Profile>
-              <img src="/profile.png" alt="Profile" />
+              <img
+                src="https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/profile.png"
+                alt="Picture of the author"
+              />
               <h2>Dari Osorio Junior</h2>
               <span>Full Stack Developer</span>
               <div>
                 <span>Educational Background</span>
                 {educationalBackgroundList.map( ({institution, course, time, certificate})=>(
-                    <div> 
+                    <div key={institution}> 
                         <h3>{course}</h3>
                         <p>{institution} {certificate && <a href={certificate} target="_blank">(Certificate Link)</a>}</p>
                         <span>{time}</span>

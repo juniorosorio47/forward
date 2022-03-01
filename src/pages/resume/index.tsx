@@ -1,11 +1,13 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useMemo, useRef } from "react";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
+import { FaFileExport } from "react-icons/fa";
 
 import Skill from "../../components/Skill";
 import WorkCard from "../../components/WorkCard";
 import { Container, Info, PersonalDetails, WorkingExp, EducationalBackground, Skills, ExportButton } from '../../styles/resume/styles';
-import { FaFileExport } from "react-icons/fa";
+
 
 const Resume: React.FC = () => {
     const container = useRef(null);
@@ -73,49 +75,49 @@ const Resume: React.FC = () => {
       const skillsList = useMemo(() => {
         return [
           {
-            logoSrc:"/javascript-icon.svg",
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/javascript-icon.svg",
             name:"Javascript",
             yearsOfExperience:4,
             color:"#F0DB4F",
             techLink:"https://nodejs.org",
           },
           {
-            logoSrc:"/reactjs-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/reactjs-icon.svg" ,
             name:"React JS" ,
             yearsOfExperience:4,
             color:"#00D8FF",
             techLink:"https://reactjs.org",
           },
           {
-            logoSrc:"/reactjs-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/reactjs-icon.svg" ,
             name:"React Native" ,
             yearsOfExperience:2,
             color:"#61DAFB",
             techLink:"https://reactnative.dev",
           },
           {
-            logoSrc:"/nodejs-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/nodejs-icon.svg" ,
             name:"Node JS" ,
             yearsOfExperience:4,
             color:"#8CC84B",
             techLink:"https://nodejs.org",
           },
           {
-            logoSrc:"/python-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/python-icon.svg" ,
             name:"Python" ,
             yearsOfExperience:3,
             color:"#356B99",
             techLink:"https://python.org",
           },
           {
-            logoSrc:"/java-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/java-icon.svg" ,
             name:"Java" ,
             yearsOfExperience:2,
             color:"#0D8AC7",
             techLink:"https://java.com",
           },
           {
-            logoSrc:"/docker-icon.svg" ,
+            logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/docker-icon.svg" ,
             name:"Docker" ,
             yearsOfExperience:2,
             color:"#1396C3",
@@ -152,7 +154,10 @@ const Resume: React.FC = () => {
             
             <Container ref={container}>
                 <header>
-                    <img src="/profile.png" alt="Profile" />
+                    <img
+                      src="https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/profile.png"
+                      alt="Picture of the author"
+                    />
                     <h1>Dari Osorio Junior</h1>
                     <h3>Full Stack Developer</h3>
                 </header>

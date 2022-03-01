@@ -53,7 +53,7 @@ export const ProjectContainer = styled.div`
         >div{
             display:flex;
             place-items:center;
-            background-color:red;
+            /* background-color:red; */
         }
 
         >p{
