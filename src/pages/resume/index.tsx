@@ -129,6 +129,7 @@ const Resume: React.FC = () => {
 
       const exportPDFWithComponent = () => {
         if (pdfExportComponent.current) {
+          //@ts-ignore
           pdfExportComponent.current.save();
         }
       };
