@@ -20,6 +20,12 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
 
+      - save_cache:
+        key: dependency-cache-{{ checksum "yarn.lock" }}
+        paths:
+          - ./node_modules
+          - ./.next/cache
+
       - name: Build
         run: |
           npm i
