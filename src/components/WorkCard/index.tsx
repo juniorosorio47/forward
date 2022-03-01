@@ -3,7 +3,7 @@ import { BsGithub, BsLink } from 'react-icons/bs';
 import Link from 'next/link';
 
 import { WorkCardContainer, BackgroundGlass } from './styles';
-import { ButtonsContainer, ButtonLink } from '../../pages/styles';
+import { ButtonsContainer, ButtonLink } from '../../styles/portfolio/styles';
 import Video from '../../components/Video';
 
 interface IProjectProps{
