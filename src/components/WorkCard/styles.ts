@@ -1,16 +1,16 @@
-import { shade } from 'polished';
+import { readableColor, shade } from 'polished';
 import styled from 'styled-components';
 
 export const BackgroundGlass = styled.div`
     /* background properties */
     position:absolute;
-    background-color:#121212;
+    background-color:#666;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     z-index:-10;
-    width:660px;
-    height:450px;
+    /* width:660px;
+    height:450px; */
     /* display properties */
     filter: blur(5px);
     border:solid 5px #121212;
@@ -20,20 +20,30 @@ export const BackgroundGlass = styled.div`
 
 export const WorkCardContainer = styled.div`
     padding:25px;
-    width:660px;
-    min-height:600px;
+    width:100%;
+    height:100%;
+    text-align:center;
+    font-weight:500;
     border-radius: 10px;
     display:grid;
-    grid-template-rows: 40px 30px 30px auto auto 50px;
+    grid-template-rows: 60px 30px 30px 120px auto 60px;
     grid-gap:20px;
-    align-items:space-between;
+    align-items:center;
     font-size:14px;
 
-    background-color:rgba(18,18,18,0.5);
+    background-color:#1E1E1E;
+    color: ${readableColor('#666')};
+    box-shadow: 2px 2px 10px #000;
+
+    >h2{
+        /* color:red; */
+        font-size:24px;
+    }
 
     >a{
         align-self:flex-end;
-        width:100px;
+        width:160px;
+
     }
 
     >h3{
@@ -47,7 +57,7 @@ export const WorkCardContainer = styled.div`
 
     >p{ 
         font-weight:200;
-        text-align:justify;
+        align-self:start;
         font-size:16px;
     }
 

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-drawing": "^1.16.2",
+    "@progress/kendo-licensing": "^1.2.2",
+    "@progress/kendo-react-pdf": "^5.0.1",
     "@react-three/drei": "^8.8.1",
     "@react-three/fiber": "^7.0.26",
     "@types/three": "^0.137.0",

@@ -23,27 +23,28 @@ const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, 
             src={`https://www.youtube.com/embed/${youtubeId}`}
         />
         
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <TagFooter>
-          {tags.map(item=>(
-            <Tag>{item}</Tag>
-          ))}
-        </TagFooter>
-        <ButtonsContainer>
+        <main>
+          <h2>{title}</h2>
+          <p>{description}</p>
+          <TagFooter>
+            {tags.map((item, index)=>(
+              <Tag key={index}>{item}</Tag>
+            ))}
+          </TagFooter>
+          <ButtonsContainer>
 
-          <ButtonLink href={githubLink} target="_blank"> 
-              <BsGithub/> 
-              Github
-          </ButtonLink>
+            <ButtonLink href={githubLink} target="_blank"> 
+                <BsGithub/> 
+                Github
+            </ButtonLink>
 
-          <ButtonLink href={liveLink} target="_blank"> 
-              <BsLink/> 
-              Live
-          </ButtonLink>
+            <ButtonLink href={liveLink} target="_blank"> 
+                <BsLink/> 
+                Live
+            </ButtonLink>
 
-        </ButtonsContainer>
-        <BackgroundGlass/>
+          </ButtonsContainer>
+        </main>
     </ProjectContainer>
   </>;
 }

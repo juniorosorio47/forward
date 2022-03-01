@@ -19,7 +19,7 @@ const WorkCard: React.FC<IProjectProps> = ({ position, company, time, descriptio
   return <>
   {/* <BackgroundGlass/> */}
     <WorkCardContainer>
-        <h1>{position}</h1>
+        <h2>{position}</h2>
         <h3>{company}</h3>
         <span>{time}</span>
         <p>{description}</p>

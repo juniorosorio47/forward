@@ -7,6 +7,7 @@ import { MdWorkOutline } from 'react-icons/md';
 import { IoMdCode } from 'react-icons/io';
 import { BiMailSend } from 'react-icons/bi';
 import { FaLinkedinIn  } from 'react-icons/fa';
+import { RiProfileLine  } from 'react-icons/ri';
 
 import Background from '../components/Background';
 import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from './styles';
@@ -19,6 +20,7 @@ const Home: React.FC = () => {
   const skillsRef = useRef(null);
   const workExperiencesRef = useRef(null);
   const aboutMeRef = useRef(null);
+
 
   const projectsList = useMemo( ()=>{
     return [
@@ -95,6 +97,13 @@ const Home: React.FC = () => {
         techLink:"https://python.org",
       },
       {
+        logoSrc:"/java-icon.svg" ,
+        name:"Java" ,
+        yearsOfExperience:2,
+        color:"#0D8AC7",
+        techLink:"https://java.com",
+      },
+      {
         logoSrc:"/docker-icon.svg" ,
         name:"Docker" ,
         yearsOfExperience:2,
@@ -115,13 +124,50 @@ const Home: React.FC = () => {
         companyWebSite:"http://valorosoltd.com"
       },
       {
-        position:'Internship',
+        position:'Full Stack Developer',
+        company:'MaestroTech Technology Solutions Ltda',
+        time:'December 2018 - March 2021',
+        description:'Worked at this company as a freelancer a full-stack developer, working with the following programming languages and technologies:',
+        techs:['React', 'Javascript', 'NodeJS', 'Python', 'Java', 'Spring', 'PostgreSQL'],
+        companyWebSite:"http://maestrotechsoft.com"
+      },
+      {
+        position:'Full Stack Developer Internship',
         company:'ITP - Itaipu Technological Park',
         time:'October 2018 - April 2019',
         description:'Internship at the Latin American Center for Open Technologies - CELTAB. Working with full stack software development, with the following languages and tools:',
-        techs:['React', 'React Native', 'Javascript', 'NodeJS', 'Ubuntu',  'Python', 'MongoDB', 'PostgreSQL'],
+        techs:['React', 'React Native', 'Javascript', 'NodeJS', 'Ubuntu',  'Python', 'MongoDB', 'PostgreSQL', 'Docker'],
         companyWebSite:"https://www.pti.org.br"
       },
+    ]
+  },[])
+
+  const educationalBackgroundList = useMemo( ()=>{
+    return [
+        {
+            institution:'Uninassal',
+            course:'Technologist in Systems Analysis',
+            time:'2021-2022 (Not finished)',
+            certificate:'',
+        },
+        {
+            institution:'Alura',
+            course:'Front-End Developer Career',
+            time:'2019',
+            certificate:'https://cursos.alura.com.br/user/dari-oj/career/desenvolvedor-front-end/certificate',
+        },
+        {
+            institution:'Hcode Treinamentos',
+            course:'PHP 7 Complete Course',
+            time:'2018',
+            certificate:'https://www.udemy.com/certificate/UC-V0QBAUB6/',
+        },
+        {
+            institution:'Dr. Hussein Alrubaye',
+            course:'Java Developer Course',
+            time:'2019',
+            certificate:'https://www.udemy.com/certificate/UC-8AWW7WS1/',
+        },
     ]
   },[])
 
@@ -130,23 +176,23 @@ const Home: React.FC = () => {
     return ref.current.scrollIntoView({ behavior: 'smooth' });
   },[]);
 
-  return <> 
-    <Head>
-      <title>Dari Osorio Junior</title>
-    </Head>
-    <Container>
+  return <Container>
       <Background />
       <StartPage>
         <Logo>
           <img src="/logo-white.svg" alt="logo" />
         </Logo>
-        <h1>Dari Osorio Junior</h1>
-        <h2>Full Stack Developer</h2>
-        <p>Thinking Forward!</p>
+        <main>
+          <h1>Dari Osorio Junior</h1>
+          <h2>Full Stack Developer</h2>
+          <p>Thinking Forward!</p>
+        </main>
+        
         <ButtonsContainer>
           <ButtonLink onClick={()=>goToSection(projectsRef)}> <IoMdCode/> Projects</ButtonLink>
           <ButtonLink onClick={()=>goToSection(skillsRef)}> <GiSkills/> {`Skills & XP`}</ButtonLink>
           <ButtonLink onClick={()=>goToSection(aboutMeRef)}> <SiAboutdotme /> About Me</ButtonLink>
+          <ButtonLink href={'/resume'}> <RiProfileLine /> Resume</ButtonLink>
         </ButtonsContainer>
       </StartPage>
       <Projects ref={projectsRef}>
@@ -236,16 +282,13 @@ const Home: React.FC = () => {
               <span>Full Stack Developer</span>
               <div>
                 <span>Educational Background</span>
-                <div> 
-                  <h3>Alura <a href="/" target="_blank">(Certification Link)</a> </h3>
-                  <p>Qualification in Front-end Development</p>
-                  <span>2018-2019</span>
-                </div>
-                <div> 
-                  <h3>Uninassal</h3>
-                  <p>Technologist in Systems Analysis</p>
-                  <span>2021-2022 (Not finished)</span>
-                </div>
+                {educationalBackgroundList.map( ({institution, course, time, certificate})=>(
+                    <div> 
+                        <h3>{course}</h3>
+                        <p>{institution} {certificate && <a href={certificate} target="_blank">(Certificate Link)</a>}</p>
+                        <span>{time}</span>
+                    </div>
+                ) )}
               </div>
 
             </Profile>
@@ -279,9 +322,7 @@ const Home: React.FC = () => {
         </main>
       </AboutMe>
       
-    </Container>
-    
-  </>;
+    </Container>;
 }
 
 export default Home;

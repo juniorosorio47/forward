@@ -11,13 +11,14 @@ interface IBackgroundProps {
 
 const Background: React.FC<IBackgroundProps> = () => {
 
-  return (<Container >
-    <Canvas >
-        <Suspense fallback={null} >
-          <StarsBackground/>
-        </Suspense>
-      </Canvas>
-  </Container>)
-}
+  return (
+    <Container >
+      <Canvas >
+          <Suspense fallback={null} >
+            <StarsBackground/>
+          </Suspense>
+        </Canvas>
+    </Container>
+  )}
 
 export default Background;

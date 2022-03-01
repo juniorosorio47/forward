@@ -30,6 +30,9 @@ export default createGlobalStyle`
         margin:0;
         padding:0;
         box-sizing: border-box;
+        max-width:100vw;
+
+
     }
 
     a {
@@ -42,7 +45,10 @@ export default createGlobalStyle`
         background:#000000;
         color:#fff;
         -webkit-font-smoothing: antialiased;
+        height:100%;
+        width:100%;
     }
+
 
     body, input, button {
         outline: none;
@@ -52,6 +58,12 @@ export default createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6 {
         font-weight:500;
+    }
+
+    p{
+        /* font-family: 'Roboto', serif; */
+        font-weight:200;
+        font-size:16px;
     }
 
     button {
