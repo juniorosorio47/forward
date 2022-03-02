@@ -33,10 +33,10 @@ const StarsBackground: React.FC = () => {
     return (<>
 
     
-        <ambientLight intensity={0.1}/>
+        <ambientLight intensity={0.5}/>
         <mesh ref={starsRef}>
             <Stars
-                radius={300}    
+                radius={100}    
                 depth={100}  
                 count={50000}
                 factor={9}

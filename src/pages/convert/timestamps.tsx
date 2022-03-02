@@ -9,6 +9,7 @@ import { FcCalendar } from 'react-icons/fc'
 import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from '../../styles/convert/styles';
 import Input from '../../components/Input'; 
 import { format } from "date-fns-tz";
+import BackToHomeButton from "../../components/BackToHomeButton";
 
 interface ITimestampsInput{
   type?:string;
@@ -149,6 +150,7 @@ const Timestamps: React.FC = () => {
     <Head>
       <title>Timestamps</title>
     </Head>
+    <BackToHomeButton backgroundColor='#FFA633' />
     <Container>
       <h1>Convert Epoch Timestamp</h1>
       <Section>

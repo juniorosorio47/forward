@@ -19,6 +19,7 @@ export const BackgroundGlass = styled.div`
 `;
 
 export const WorkCardContainer = styled.div`
+
     padding:25px;
     width:100%;
     height:100%;
@@ -26,7 +27,7 @@ export const WorkCardContainer = styled.div`
     font-weight:500;
     border-radius: 10px;
     display:grid;
-    grid-template-rows: 60px 30px 30px 120px auto 60px;
+    grid-template-rows: 40px 30px 20px 180px auto 60px;
     grid-gap:20px;
     align-items:center;
     font-size:14px;
@@ -37,7 +38,7 @@ export const WorkCardContainer = styled.div`
 
     >h2{
         /* color:red; */
-        font-size:24px;
+        font-size:22px;
     }
 
     >a{
@@ -72,12 +73,17 @@ export const WorkCardContainer = styled.div`
 
         >li{
             display:flex;
-            background-color:rgba(18,18,18,1);
+            /* background-color:rgba(18,18,18,1); */
             border-radius:8px;
             place-items:center;
             font-size:16px;
             line-height:25px;
             padding:10px;
+
+            border:1px solid #00D8FF;
+
+            color: #00D8FF;
+            border-radius:8px;
             
         }
     }

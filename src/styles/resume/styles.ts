@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
-  font-family:'Spartan', sans-serif;
+  font-family:'Arial', sans-serif;
   position: absolute;
   top: 0;
   left:0;
@@ -13,17 +13,11 @@ export const Container = styled.div`
   padding:50px 200px 50px 200px;
   line-height:30px;
   width:auto;
-  
-
-
   background-color:#121212;
 
   h1{
     font-size:48px;
     font-weight:600;
-    
-
-
   }
 
   >div>h2{
@@ -31,10 +25,6 @@ export const Container = styled.div`
     font-weight:bold;
     font-size:26px;
   }
-
-  
-
-  
 
   >header{
     display:grid;

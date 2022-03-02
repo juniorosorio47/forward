@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useCallback, useMemo, useState } from "react";
 import { FiDelete, FiTrash2 } from "react-icons/fi";
+import BackToHomeButton from "../../components/BackToHomeButton";
 
 import { Container, CalculatorBody, CalculatorInput, CalculatorNumbers, CalculatorOperators, History } from '../../styles/calculator/styles';
 
@@ -103,74 +104,78 @@ const Calculator: React.FC = () => {
 
   }, [calc, result])
 
-  return <Container>
-    <Head>
-        <title>Calculator</title>
-    </Head>
-    <h1>Forward Online Calculator</h1>
-    <span>Click at the numbers and operators to use the calculator!</span>
-    <div>
-      <CalculatorBody>
-          <CalculatorInput>
-            <input 
-              onChange={(event)=>{updateCalc(event.target.value)}}
-              type="text" 
-              readOnly
-              value={calc ? calc : '0'} 
-              onKeyPress={(event) => {
-                if (!/^(\+|-|\*|\/|=|%|[0-9])$/.test(event.key)) {
-                  event.preventDefault();
-                }
-              }}
+  return (<>
+    <Container>
+      <Head>
+          <title>Calculator</title>
+      </Head>
+      <h1>Forward Online Calculator</h1>
+      <span>Click at the numbers and operators to use the calculator!</span>
+      <div>
+        <CalculatorBody>
+            <CalculatorInput>
+              <input 
+                onChange={(event)=>{updateCalc(event.target.value)}}
+                type="text" 
+                readOnly
+                value={calc ? calc : '0'} 
+                onKeyPress={(event) => {
+                  if (!/^(\+|-|\*|\/|=|%|[0-9])$/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
 
-            />
-            <span>= {result ? result : '0'}</span>
-          </CalculatorInput>
-          <CalculatorOperators>
-            <button onClick={() => updateCalc('+')}> + </button>
-            <button onClick={() => updateCalc('-')}> - </button>
-            <button onClick={() => updateCalc('*')}> x </button>
-            <button onClick={() => updateCalc('/')}> / </button>
-            <button onClick={() => clearAll()}>C</button>
-            <button id="delete" onClick={() => deleteLast()}><FiDelete/></button>
-          </CalculatorOperators>
-          <CalculatorNumbers>
-            {digits.map((digit:any)=>{
-              if(digit==='='){
-                return (
-                  <button key={digit} onClick={() => calculate()}> { digit } </button>
-                )
-              }else{
-                return (<button key={digit} onClick={() => updateCalc(digit.toString())}> { digit } </button>)
+              />
+              <span>= {result ? result : '0'}</span>
+            </CalculatorInput>
+            <CalculatorOperators>
+              <button onClick={() => updateCalc('+')}> + </button>
+              <button onClick={() => updateCalc('-')}> - </button>
+              <button onClick={() => updateCalc('*')}> x </button>
+              <button onClick={() => updateCalc('/')}> / </button>
+              <button onClick={() => clearAll()}>C</button>
+              <button id="delete" onClick={() => deleteLast()}><FiDelete/></button>
+            </CalculatorOperators>
+            <CalculatorNumbers>
+              {digits.map((digit:any)=>{
+                if(digit==='='){
+                  return (
+                    <button key={digit} onClick={() => calculate()}> { digit } </button>
+                  )
+                }else{
+                  return (<button key={digit} onClick={() => updateCalc(digit.toString())}> { digit } </button>)
+                }
+
+              })
               }
 
-            })
-            }
+            </CalculatorNumbers>
+          
+        </CalculatorBody>
 
-          </CalculatorNumbers>
-        
-      </CalculatorBody>
+        <History>
+          <header>
+            <h3>History <span>(Press "=" to save at history)</span></h3>
+            <button key={'clear'} onClick={clearHistory}> <FiTrash2/> </button>
+          </header>
+          <div>
+            {history.length>0 ? history.map(item=>{
+              if(item === ''){
+                return;
+              }else{
+                return(
+                  <p>{item}</p>
+                )
+              }
+            }): (<span>Empty history</span>) }
+          </div>
+        </History>
 
-      <History>
-        <header>
-          <h3>History <span>(Press "=" to save at history)</span></h3>
-          <button key={'clear'} onClick={clearHistory}> <FiTrash2/> </button>
-        </header>
-        <div>
-          {history.length>0 ? history.map(item=>{
-            if(item === ''){
-              return;
-            }else{
-              return(
-                <p>{item}</p>
-              )
-            }
-          }): (<span>Empty history</span>) }
-        </div>
-      </History>
-
-    </div>
-  </Container>;
+      </div>
+      
+    </Container>
+    <BackToHomeButton backgroundColor='#0E6DB7'/>
+  </>);
 }
 
 export default Calculator;

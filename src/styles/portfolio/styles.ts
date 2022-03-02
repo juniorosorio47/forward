@@ -140,7 +140,8 @@ export const StartPage = styled.div`
         grid-template-rows: 200px 160px .2fr;
         grid-template-columns:1fr;
         grid-gap: 30px;
-        width:40%;
+        width:50%;
+        max-width:740px;
         height:100%;
         align-content: center;
 
@@ -152,6 +153,9 @@ export const StartPage = styled.div`
 
             >p{
                 margin-top:10px;
+                color:#00D8FF;
+                font-weight:500;
+                font-size:18px;
             }
         }
     }
@@ -304,6 +308,7 @@ export const WorkExperiences = styled.div`
 
 export const TagFooter = styled.footer`
     height:100%;
+    width:100%;
     display:flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -316,7 +321,7 @@ export const Tag = styled.span`
     /* background:; */
     height:35px;
     padding:10px;
-    font-size:12px;
+    font-size:11px;
     font-weight:bold;
     display:flex;
     place-items: center;
@@ -325,6 +330,7 @@ export const Tag = styled.span`
 
     color: #00D8FF;
     border-radius:8px;
+    
 `;
 
 export const AboutMe = styled.div`
@@ -334,6 +340,7 @@ export const AboutMe = styled.div`
     grid-template-rows: 150px 1fr;
     grid-template-columns: 1fr;
     place-items: center;
+    
 
     
     >main{
@@ -341,11 +348,14 @@ export const AboutMe = styled.div`
         place-items: center;
         width:100%;
         height:auto;
-        grid-gap:60px;
         padding: 50px 0px 50px 0px;
+        
+
 
         @media only screen and (min-width: 768px) {
             grid-template-columns: 1fr 1fr;
+
+
         }
     }
 `;

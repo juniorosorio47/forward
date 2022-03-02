@@ -21,6 +21,7 @@ import ProjectCard from '../components/ProjectCard';
 import Skill from '../components/Skill';
 import WorkCard from '../components/WorkCard';
 import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from '../styles/portfolio/styles';
+import BackToHomeButton from '../components/BackToHomeButton';
 
 const Home: React.FC = () => {
   const projectsRef = useRef(null);
@@ -35,7 +36,7 @@ const Home: React.FC = () => {
         title:"Do Next",
         description:"This is a ToDo aplication that you can create how many lists you want. The lists are stored in the browser local storage.",
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/donext',
-        liveLink:'/donext',
+        liveLink: '/forward/donext',
         youtubeId:"pu01yqBIBlE",
         tags:['NextJS', 'ReactJS', 'Javascript', 'Web Storage API', 'React Spring']
       },
@@ -43,7 +44,7 @@ const Home: React.FC = () => {
         title:"Timestamps Converter",
         description:"This is a simple converter to convert timestamps to human-frendly dates and vice versa.",
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/convert',
-        liveLink:'/convert/timestamps',
+        liveLink:'/forward/convert/timestamps',
         youtubeId:"pu01yqBIBlE",
         tags:['NextJS', 'ReactJS', 'Javascript','React Spring']
       },
@@ -51,7 +52,7 @@ const Home: React.FC = () => {
         title:"Calculator with history",
         description:"This app is a simple calculator that register the history at the aplication state.",
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/calculator',
-        liveLink:'/calculator',
+        liveLink: '/forward/calculator',
         youtubeId:"pu01yqBIBlE",
         tags:['NextJS', 'ReactJS', 'Javascript']
       },
@@ -59,7 +60,7 @@ const Home: React.FC = () => {
         title:"This Portfolio",
         description:"This portfolio is made in NextJS. It contains all the example projects on different pages, at the same NextJS server.",
         githubLink:'https://github.com/juniorosorio47/forward',
-        liveLink:'/',
+        liveLink:'/forward',
         youtubeId:"pu01yqBIBlE",
         tags:['NextJS', 'ReactJS', 'Web Storage API', 'React Spring', 'Three JS', 'Javascript']
       },
@@ -187,6 +188,7 @@ const Home: React.FC = () => {
       <Background />
       <Head>
         <title>Dari Osorio Junior</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <StartPage>
         <Logo>

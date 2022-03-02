@@ -29,23 +29,18 @@ export const ProjectContainer = styled.div`
     grid-template-rows: .8fr 1fr;
     border-radius: 10px;
 
-    @media only screen and (min-width: 768px) {
-        grid-template-rows: .9fr 1fr;
-    }
-
     >iframe{
         border-radius: 10px;
         height:100%;
         width:100%;
     }
 
-   
     >main{
         width:100%;
         height:auto;
         display:grid;
         place-items:center;
-        grid-template-rows: 80px 150px 120px 60px;
+        grid-template-rows: 80px 160px 120px 60px;
         grid-template-columns: 1fr;
         padding:15px;
         
@@ -57,9 +52,9 @@ export const ProjectContainer = styled.div`
         }
 
         >p{
-            line-height:28px;
+            line-height:24px;
             font-weight: 400;
-            font-size:18px;
+            font-size:16px;
 
             max-width:100%;
         }
@@ -69,21 +64,21 @@ export const ProjectContainer = styled.div`
         }
 
         
-
-       
-
-
-        
         @media only screen and (min-width: 768px) {
             width:100%;
-            grid-template-rows: 80px 150px auto 100px;
+            height:100%;
+            grid-template-rows: 80px 150px 80px 100px;
+            max-width:500px;
+            max-height:740px;
+        }
+    }
 
+    @media only screen and (min-width: 768px) {
+        grid-template-rows: 300px 1fr;
 
-            >iframe{
-                border-radius: 10px;
-                height:100%;
-                width:100%;
-            }
+        >iframe{
+            border-radius: 10px;
+            height:100%;
         }
     }
 

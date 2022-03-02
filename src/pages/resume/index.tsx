@@ -7,6 +7,7 @@ import { FaFileExport } from "react-icons/fa";
 import Skill from "../../components/Skill";
 import WorkCard from "../../components/WorkCard";
 import { Container, Info, PersonalDetails, WorkingExp, EducationalBackground, Skills, ExportButton } from '../../styles/resume/styles';
+import BackToHomeButton from "../../components/BackToHomeButton";
 
 
 const Resume: React.FC = () => {
@@ -176,7 +177,7 @@ const Resume: React.FC = () => {
                     <div>
                         <p><b>Currently working: </b>Yes</p>
                         <p><b>Level of education: </b>Studying technologist in Systems Analysis and Development.</p>
-                        <p><b>Portfolio: </b> http://localhost:3000/</p>
+                        <p><b> <a href="https://juniorosorio47.github.io/forward/">Portfolio:</a> </b> </p>
                     </div>
                 </PersonalDetails>
 
@@ -226,7 +227,7 @@ const Resume: React.FC = () => {
             </Container>
 
         </PDFExport>
-        
+        <BackToHomeButton backgroundColor='#00D8FF' style={{top:'20px', left:'20px'}}/>
     </>
 };
 
