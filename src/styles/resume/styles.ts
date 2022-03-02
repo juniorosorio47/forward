@@ -10,43 +10,61 @@ export const Container = styled.div`
   height: auto;
   display:grid;
   grid-gap: 30px;
-  padding:50px 200px 50px 200px;
-  line-height:30px;
+  text-shadow:1px 1px 5px #000;
   width:auto;
   background-color:#121212;
+  line-height:30px;
 
   h1{
-    font-size:48px;
     font-weight:600;
   }
 
   >div>h2{
-    /* color: #00D8FF; */
     font-weight:bold;
-    font-size:26px;
   }
+
 
   >header{
     display:grid;
     place-items:center;
     grid-gap:15px;
+    padding-top:100px;
 
     >h3{
-      font-size:26px;
+      
       color:#fff;
       opacity:0.8;
     }
 
-
     >img{
-      width:300px;
+      width:200px;
       border-radius:200%;
       margin-bottom:10px;
       box-shadow: 0px 0px 10px #000;
     }
   }
+  
+  padding:0px 20px 20px 20px;
 
-  text-shadow:1px 1px 5px #000;
+  @media only screen and (min-width: 768px) {
+    padding:50px 200px 50px 200px;
+
+    >div>h2{
+      font-size:26px;
+    }
+
+    >h1{
+      font-size:48px;
+    }
+
+    >header{
+      font-size:26px;
+
+      >img{
+        width:300px;
+      }
+    }
+  }
 `;
 
 export const Info = styled.div`
@@ -58,6 +76,12 @@ export const Info = styled.div`
     box-shadow: 2px 2px 10px #000;
     padding:10px;
     border-radius:8px;
+
+  }
+
+
+  @media only screen and (min-width: 768px) {
+    
   }
   
 `;
@@ -72,25 +96,34 @@ export const PersonalDetails = styled.div`
     background-color:#1E1E1E;
     padding:10px;
     border-radius:8px;
+    
   }
 `;
 
 export const WorkingExp = styled.div`
   display:grid;
-  grid-template-rows: 40px 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-gap:20px;
-  /* padding:20px; */
+  grid-template-rows: 40px 1fr;
   
+  /* padding:20px; */
 
-  >h2{
-    grid-column:1/4;
-    grid-row:1;
+
+
+
+  >main{
+    display:grid;
+    grid-gap:20px;
+    justify-content: center;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
   }
 
+  @media only screen and (min-width: 768px) {
+    >main{
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
-  >div{
-    /* margin:20px; */
+    
   }
 `;
 
@@ -98,11 +131,11 @@ export const EducationalBackground = styled.div`
   /* Educational background */
   /* padding:20px; */
   
-  >div {
+  >main {
     
     display:grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
     grid-gap:20px;
     border-radius:8px;
     margin-top:20px;
@@ -140,8 +173,15 @@ export const EducationalBackground = styled.div`
           font-size:14px;
           font-weight:200;
       }
+    }
   }
-}
+
+
+  @media only screen and (min-width: 768px) {
+    >main{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 `;
 
 export const Skills = styled.div`

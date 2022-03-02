@@ -40,10 +40,12 @@ export const Container = styled.div`
 `;
 
 export const YearsOfExperience = styled.div<IYearsOfExperienceProps>`
-    display:grid;
-    align-items:center;
+    display:flex;
+    place-items:center;
+
     
     >div{
+        margin-right:10px;
         animation: ${appearFromLeft} 2s;
         height:30px;
         
@@ -58,7 +60,8 @@ export const YearsOfExperience = styled.div<IYearsOfExperienceProps>`
         ${({color, years}) => css`
 
             background-color: ${shade(0.2, color)};
-            width:${(100*years)/4.5}%;
+            width:${(100*years)/4}%;
+            min-width:60px;
 
             >p{
                
@@ -70,7 +73,7 @@ export const YearsOfExperience = styled.div<IYearsOfExperienceProps>`
 
         @media only screen and (min-width: 768px) {
             ${({color, years}) => css`
-                width:${(100*years)/5}%;
+                width:${(100*years)/4.5}%;
             `}
         }
 

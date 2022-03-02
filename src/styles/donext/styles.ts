@@ -218,6 +218,8 @@ export const Info = styled.div`
 
         >p{
             font-size:14px;
+            font-weight:500;
+            color:#5C325D;
             display:flex;
             place-items:center;
             >svg{

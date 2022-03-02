@@ -20,7 +20,13 @@ const Skill: React.FC<ISkillProps> = ({logoSrc, name, yearsOfExperience, color, 
             <YearsOfExperience color={color} years={yearsOfExperience}>
                 
                 <div>
-                    <p>{yearsOfExperience} Years</p>
+                    <p>
+                        {yearsOfExperience == 1 ?
+                            `${yearsOfExperience} Year`
+                        :
+                            `${yearsOfExperience} Years`
+                        }
+                    </p>
                 </div>
             </YearsOfExperience>
         </Container>

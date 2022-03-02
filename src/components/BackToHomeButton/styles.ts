@@ -9,8 +9,10 @@ interface IBackgroundProps{
 
 export const Container = styled.div<IBackgroundProps>`
     position: absolute;
-    bottom:50px;
-    right:10px;
+    top:20px;
+    left:5px;
+    z-index:1000;
+   
     width:200px;
     height:60px;
     font-size:14px;
@@ -24,8 +26,8 @@ ${props=>css`
     >a{
         margin-left:10px;
         color:#fff;
-        width:50px;
-        height:50px;    
+        width:40px;
+        height:40px;    
         display:grid;
         place-items: center;
         border-radius:8px;
@@ -41,11 +43,22 @@ ${props=>css`
             transition: background 0.3s ease-in-out;
             background-color: ${shade( 0.3 ,props.backgroundColor)};
         }
+    }
 `}
-    
-        
+    >span{
+        display:none;
+    }
 
-        
+    @media only screen and (min-width: 768px) {
+        >span{
+            display:flex;
+        }
+        top:auto;
+        left:auto;
+        bottom:50px;
+        right:10px;
+
+
         
     }
   

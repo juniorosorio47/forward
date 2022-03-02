@@ -113,6 +113,7 @@ export const StartPage = styled.div`
     width:100%;
     height:100vh;
     align-content: center;
+    margin-bottom:30px;
 
     /* padding:60px 0px 60px 0px; */
     
@@ -122,15 +123,28 @@ export const StartPage = styled.div`
 
     >${ButtonsContainer}{
         padding:20px;
+
+        >a{
+            max-width:180px;
+        }
+
+        
     }
     
     >main{
         display:grid;
-        grid-gap:5px;
+
+        grid-gap:10px;
         height:auto;
 
         >h1{
             font-size:36px;
+            font-weight:500;
+        }
+
+        >p{
+            color:#00D8FF;
+            font-size:18px;
             font-weight:500;
         }
 
@@ -166,9 +180,11 @@ export const StartPage = styled.div`
 export const Projects = styled.div`
     width:100%;
     display: grid;
-    grid-template-rows: 150px auto 100px;
+    grid-template-rows: 100px auto 100px;
     grid-template-columns: 1fr;
     place-items: center;
+
+    
     
     
     >main{  
@@ -179,6 +195,7 @@ export const Projects = styled.div`
         align-items:flex-start;
         /* background-color:red; */
         grid-gap: 30px;
+        padding-top:30px;
 
         @media only screen and (min-width: 768px) {
             flex-direction:row;
@@ -298,6 +315,7 @@ export const WorkExperiences = styled.div`
         place-items:center;
         align-items:flex-start;
         grid-gap: 30px;
+        padding-bottom:30px;
 
         @media only screen and (min-width: 768px) {
             flex-direction:row;
@@ -310,11 +328,12 @@ export const TagFooter = styled.footer`
     height:100%;
     width:100%;
     display:flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    grid-gap:5px;
-
+    flex-flow: row wrap;
     justify-content: flex-start;
+  
+
+
+
 `;
 
 export const Tag = styled.span`
@@ -325,11 +344,12 @@ export const Tag = styled.span`
     font-weight:bold;
     display:flex;
     place-items: center;
-
     border:1px solid #00D8FF;
-
     color: #00D8FF;
     border-radius:8px;
+    margin:0;
+    margin-right:10px;
+
     
 `;
 
@@ -337,7 +357,7 @@ export const AboutMe = styled.div`
     width:100%;
     height:100vh;
     display: grid;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 100px 1fr;
     grid-template-columns: 1fr;
     place-items: center;
     

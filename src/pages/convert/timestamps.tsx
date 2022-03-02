@@ -5,6 +5,7 @@ import { Form } from '@unform/web';
 
 import { FaAngleDoubleRight, FaClock, FaRetweet } from 'react-icons/fa'
 import { FcCalendar } from 'react-icons/fc'
+import { GrTransaction } from 'react-icons/gr'
 
 import { Container, Insert, Result, Content, Divider, Field, Section, ConvertButton } from '../../styles/convert/styles';
 import Input from '../../components/Input'; 
@@ -147,10 +148,10 @@ const Timestamps: React.FC = () => {
   },[dateToTimestamps])
 
   return <>
+    <BackToHomeButton backgroundColor='#FFA633' />
     <Head>
       <title>Timestamps</title>
     </Head>
-    <BackToHomeButton backgroundColor='#FFA633' />
     <Container>
       <h1>Convert Epoch Timestamp</h1>
       <Section>
@@ -172,12 +173,11 @@ const Timestamps: React.FC = () => {
                 />
               </Field>
               <ConvertButton type="submit">
-                <FaRetweet/>
+                <GrTransaction/> Convert
               </ConvertButton>
             </Form>
           </Insert>
           {showResultTimestamp && <>
-              <FaAngleDoubleRight/>
             <Result>
               {error ? <p>ERROR: Invalid Timestamp</p> : <>
                 <p>Assuming that this timestamp is in <span>{timestampToDate.type}:</span></p>
@@ -208,93 +208,96 @@ const Timestamps: React.FC = () => {
                 second:dateToTimestamps.second,
               }}
             >
-              <Field id="year">
-                <p>Year</p>
-                <Input 
-                  type="text" 
-                  name="year" 
-                  placeholder="Year" 
-                  max="4"
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      console.log();
-                      event.preventDefault();
-                    }
-                  }} 
-                />
-              </Field>
+              <main>
+                <Field id="year">
+                  <p>Year</p>
+                  <Input 
+                    type="text" 
+                    name="year" 
+                    placeholder="Year" 
+                    max="4"
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        console.log();
+                        event.preventDefault();
+                      }
+                    }} 
+                  />
+                </Field>
 
-              <Field>
-                <p>Mon</p>
-                <Input 
-                  type="text" 
-                  name="month" 
-                  placeholder="Month" 
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                />
-              </Field>
-              <Field>
-                <p>Day</p>
-                <Input 
-                  type="text" 
-                  name="day" 
-                  placeholder="Day" 
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                />
-              </Field>
-              <Field>
-                <p>Hr</p>
-                <Input 
-                  type="text" 
-                  name="hour" 
-                  placeholder="Hours" 
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                />
-              </Field>
-              <Field>
-                <p>Min</p>
-                <Input 
-                  type="text"  
-                  name="minute" 
-                  placeholder="Minutes" 
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                />
-              </Field>
-              <Field>
-                <p>Sec</p>
-                <Input 
-                  type="text" 
-                  name="second" 
-                  placeholder="Seconds" 
-                  onKeyPress={(event) => {
-                    if (!/^([0-9])$/.test(event.key)) {
-                      event.preventDefault();
-                    }
-                  }}
-                />
-              </Field>
+                <Field>
+                  <p>Month</p>
+                  <Input 
+                    type="text" 
+                    name="month" 
+                    placeholder="Month" 
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                  />
+                </Field>
+                <Field>
+                  <p>Day</p>
+                  <Input 
+                    type="text" 
+                    name="day" 
+                    placeholder="Day" 
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                  />
+                </Field>
+                <Field>
+                  <p>Hour</p>
+                  <Input 
+                    type="text" 
+                    name="hour" 
+                    placeholder="Hours" 
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                  />
+                </Field>
+                <Field>
+                  <p>Minutes</p>
+                  <Input 
+                    type="text"  
+                    name="minute" 
+                    placeholder="Minutes" 
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                  />
+                </Field>
+                <Field>
+                  <p>Seconds</p>
+                  <Input 
+                    type="text" 
+                    name="second" 
+                    placeholder="Seconds" 
+                    onKeyPress={(event) => {
+                      if (!/^([0-9])$/.test(event.key)) {
+                        event.preventDefault();
+                      }
+                    }}
+                  />
+                </Field>
+              </main>
               
-              <ConvertButton type="submit"><FaRetweet/></ConvertButton>
+              <ConvertButton type="submit">
+                <GrTransaction/> Convert
+              </ConvertButton>
             </Form>
           </Insert>
           {showResultDate && <>
-              <FaAngleDoubleRight/>
             <Result>
               {error ? <p>ERROR: Invalid Timestamp</p> : <>
                 <p><span>Epoch timestamp:</span> {dateToTimestamps.timestamp}</p>
