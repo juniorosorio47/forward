@@ -27,3 +27,4 @@ src/pages/Portfolio
 src/pages/Dashboard
 .next
 # yarn.lock
+gh-pages
