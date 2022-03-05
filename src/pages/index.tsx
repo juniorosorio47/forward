@@ -66,7 +66,6 @@ const Home: React.FC = () => {
       </StartPage>
       
         <Projects ref={projectsRef}>
-          {projectsRefValue && <>
             <SectionHeader>
               <h1> <IoMdCode/> Projects</h1>
               <p>These are some sample projects that I made:</p>
@@ -94,12 +93,10 @@ const Home: React.FC = () => {
                 See all on Github
               </ButtonLink>
             </ButtonsContainer>
-          </>
-          }
+      
         </Projects>
 
       <Skills ref={skillsRef}>
-        {skillsRefValue && <>
           <SectionHeader>
             <h1> <GiSkills/> Skills {'&'} XP</h1>
             <p>These are my main skills:</p>
@@ -121,11 +118,9 @@ const Home: React.FC = () => {
               />
             ))}
           </main>
-        </>}
       </Skills>
 
       <WorkExperiences ref={workExperiencesRef}>
-        {workExperiencesRefValue && <>
           <SectionHeader>
               <h2> <MdWorkOutline/> Working Experiences</h2>
               <p>These are my most relevant working experiences:</p>
@@ -143,11 +138,9 @@ const Home: React.FC = () => {
               />
             ))}
           </main>
-        </>}
       </WorkExperiences>
 
       <AboutMe ref={aboutMeRef}>
-        {aboutMeRefValue && <>
           <SectionHeader>
             <h1> <SiAboutdotme/> About Me</h1>
             <p>Something about me:</p>
@@ -200,7 +193,6 @@ const Home: React.FC = () => {
                 </div>
               </Description>
           </main>
-        </>}
       </AboutMe>
       
     </Container>;
