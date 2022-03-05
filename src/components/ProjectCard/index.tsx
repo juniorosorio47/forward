@@ -13,9 +13,10 @@ interface IProjectProps{
   liveLink: string;
   youtubeId: string;
   tags: string[];
+  tagsColor: string;
 }
 
-const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, liveLink, youtubeId, tags }) => {
+const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, liveLink, youtubeId, tags, tagsColor }) => {
   return <>
     <ProjectContainer>
         
@@ -28,7 +29,7 @@ const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, 
           <p>{description}</p>
           <TagFooter>
             {tags.map((item, index)=>(
-              <Tag key={index}>{item}</Tag>
+              <Tag color={tagsColor} key={index}>{item}</Tag>
             ))}
           </TagFooter>
           <ButtonsContainer>

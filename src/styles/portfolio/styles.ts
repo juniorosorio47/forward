@@ -1,5 +1,9 @@
-import { readableColor } from 'polished';
-import styled, { keyframes } from 'styled-components';
+import { lighten, readableColor } from 'polished';
+import styled, { css, keyframes } from 'styled-components';
+
+interface ITagProps{
+    color?:string;
+}
 
 const appearFromLeft = keyframes`
     from{
@@ -349,6 +353,7 @@ export const WorkExperiences = styled.div`
 `;
 
 
+
 export const TagFooter = styled.footer`
     height:100%;
     width:100%;
@@ -361,7 +366,7 @@ export const TagFooter = styled.footer`
 
 `;
 
-export const Tag = styled.span`
+export const Tag = styled.span<ITagProps>`
     /* background:; */
     height:35px;
     padding:10px;
@@ -369,11 +374,19 @@ export const Tag = styled.span`
     font-weight:bold;
     display:flex;
     place-items: center;
-    border:1px solid #00D8FF;
-    color: #00D8FF;
     border-radius:8px;
     margin:0;
     margin-right:10px;
+
+    color: #00D8FF;
+    border:1px solid #00D8FF;
+    
+    ${props => props.color && css`
+        color:${lighten(0.3, props.color)};
+        border:1px solid ${lighten(0.2, props.color)};
+    `}
+
+
 
     
 `;
@@ -394,6 +407,7 @@ export const AboutMe = styled.div`
     >main{
         animation: ${appearFromBottom} 2s;
         display:grid;
+        grid-gap:50px;
         place-items: center;
         width:100%;
         height:auto;

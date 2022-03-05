@@ -23,12 +23,12 @@ export const ProjectContainer = styled.div`
     animation: ${appearFromLeft} 1s;
 
     display:grid;
-    grid-template-rows: 180px 1fr;
+    grid-template-rows: 300px 1fr;
     border-radius:15px;
 
     >iframe{
         border-radius:15px;
-        height:180px;
+        height:300px;
         width:100%;
     }
 

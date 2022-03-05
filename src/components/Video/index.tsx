@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 // import { Container } from './styles';
 
@@ -9,7 +9,9 @@ export interface IVideo {
 }
 
 const Video: React.FC<IVideo> = ({width, height, src}) => {
+  const videoRef = useRef(null)
   return <iframe 
+    ref={videoRef}
     width={width}
     height={height}
     src={src}

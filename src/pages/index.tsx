@@ -72,7 +72,7 @@ const Home: React.FC = () => {
               <p>These are some sample projects that I made:</p>
             </SectionHeader>
             <main>
-              {projectsList.map(({title, description, githubLink, liveLink, youtubeId, tags}, index)=>(
+              {projectsList.map(({title, description, githubLink, liveLink, youtubeId, tags, tagsColor}, index)=>(
 
                 <ProjectCard 
                   key={index}
@@ -82,6 +82,7 @@ const Home: React.FC = () => {
                   liveLink={liveLink}
                   youtubeId={youtubeId}
                   tags={tags}
+                  tagsColor={tagsColor}
                 />
                 
               ))}
