@@ -116,7 +116,7 @@ const Resume: React.FC = () => {
           </Container>
 
       </PDFExport>
-      <BackToHomeButton backgroundColor='#00D8FF'/>
+      <BackToHomeButton backgroundColor='#00D8FF' style={{top:20, left:50}}/>
   </>
 };
 

@@ -1,10 +1,26 @@
 import { readableColor } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateX(-100px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+`;
 
 export const ProjectContainer = styled.div`
     background-color:rgba(102, 102, 102,0.3);
     color: ${readableColor('#666')};
+
+    animation: ${appearFromLeft} 1s;
 
     display:grid;
     grid-template-rows: 180px 1fr;

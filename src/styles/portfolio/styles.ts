@@ -1,5 +1,33 @@
 import { readableColor } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateX(-100px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
+const appearFromBottom = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateY(+100px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
 
 export const Container = styled.div`
     position: absolute;
@@ -184,9 +212,6 @@ export const Projects = styled.div`
     grid-template-columns: 1fr;
     place-items: center;
 
-    
-    
-    
     >main{  
         width:90%;
         display:flex;
@@ -361,9 +386,13 @@ export const AboutMe = styled.div`
     grid-template-columns: 1fr;
     place-items: center;
     
+    
+
+
 
     
     >main{
+        animation: ${appearFromBottom} 2s;
         display:grid;
         place-items: center;
         width:100%;

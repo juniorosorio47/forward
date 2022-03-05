@@ -1,5 +1,20 @@
 import { readableColor, shade } from 'polished';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const appearFromLeft = keyframes`
+    from{
+        opacity: 0;
+        
+        
+        transform: translateX(-100px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+        
+    }
+`;
 
 export const BackgroundGlass = styled.div`
     /* background properties */
@@ -19,6 +34,7 @@ export const BackgroundGlass = styled.div`
 `;
 
 export const WorkCardContainer = styled.div`
+    animation: ${appearFromLeft} 1s;
 
     padding:25px;
     width:100%;
