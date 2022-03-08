@@ -28,6 +28,13 @@ const skillsList = [
       techLink:"https://nodejs.org",
     },
     {
+      logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/ts-logo.svg" ,
+      name:"TypeScript" ,
+      yearsOfExperience:2,
+      color:"#3178C6",
+      techLink:"https://www.typescriptlang.org",
+    },
+    {
       logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/python-icon.svg" ,
       name:"Python" ,
       yearsOfExperience:3,
