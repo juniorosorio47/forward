@@ -170,7 +170,7 @@ export const ButtonsContainer = styled.div`
             &+button{
                 margin-left:20px;
             }
-            
+
             &+a{
                 margin-left:20px;
             }
@@ -201,6 +201,9 @@ export const StartPage = styled.div`
         padding:20px;
 
         >a{
+            max-width:180px;
+        }
+        >button{
             max-width:180px;
         }
 
