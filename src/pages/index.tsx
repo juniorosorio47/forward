@@ -14,7 +14,7 @@ import Background from '../components/Background';
 import ProjectCard from '../components/ProjectCard';
 import Skill from '../components/Skill';
 import WorkCard from '../components/WorkCard';
-import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description } from '../styles/portfolio/styles';
+import { Container, StartPage, ButtonsContainer, ButtonLink, Projects, Logo, AboutMe, Skills, SectionHeader, WorkExperiences, Profile, Description, Button } from '../styles/portfolio/styles';
 
 
 import skillsList from '../utils/skillsList';
@@ -39,10 +39,12 @@ const Home: React.FC = () => {
   },[]);
 
   return <Container>
+
       <Background />
       <Head>
         <title>Dari Osorio Junior</title>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="description" content="Dari Osorio Junior, I am a full-stack developer."/>
       </Head>
       <StartPage>
         <Logo>
@@ -58,9 +60,9 @@ const Home: React.FC = () => {
         </main>
         
         <ButtonsContainer>
-          <ButtonLink onClick={()=>goToSection(projectsRef)}> <IoMdCode/> Projects</ButtonLink>
-          <ButtonLink onClick={()=>goToSection(skillsRef)}> <GiSkills/> {`Skills & XP`}</ButtonLink>
-          <ButtonLink onClick={()=>goToSection(aboutMeRef)}> <SiAboutdotme /> About Me</ButtonLink>
+          <Button onClick={()=>goToSection(projectsRef)}> <IoMdCode/> Projects</Button>
+          <Button onClick={()=>goToSection(skillsRef)}> <GiSkills/> {`Skills & XP`}</Button>
+          <Button onClick={()=>goToSection(aboutMeRef)}> <SiAboutdotme /> About Me</Button>
           <ButtonLink href={'/forward/resume'}> <RiProfileLine /> Resume</ButtonLink>
         </ButtonsContainer>
       </StartPage>

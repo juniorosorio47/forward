@@ -108,6 +108,7 @@ const Calculator: React.FC = () => {
     <Container>
       <Head>
           <title>Calculator</title>
+          <meta name="description" content="Calculator with history" />
       </Head>
       <h1>Forward Online Calculator</h1>
       <span>Click at the numbers and operators to use the calculator!</span>

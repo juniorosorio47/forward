@@ -29,6 +29,7 @@ const Resume: React.FC = () => {
   return <>
       <Head>
           <title>Resume: Dari Osorio Junior</title>
+          <meta name="description" content="Dari Osorio Junior Full stack developer Resume. React, Javascript, NodeJS"/>
       </Head>
       <ExportButton onClick={exportPDFWithComponent}> <FaFileExport/> Export to PDF</ExportButton>
       <PDFExport

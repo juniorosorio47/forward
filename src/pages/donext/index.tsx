@@ -196,6 +196,7 @@ const TodoApp: React.FC = () => {
   return (<>
     <Head>
         <title>Do Next</title>
+        <meta name="description" content="Do next. Todo aplication that you can create how many lists you want. They are stored in the browser local storage."/>
     </Head>
     
     <Container>

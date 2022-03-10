@@ -106,6 +106,33 @@ export const ButtonLink = styled.a`
 
     }
 `;
+
+export const Button = styled.button`
+    color: #fff;
+    border:2px solid #fff;
+    height:60px;
+
+    background-color:transparent;
+    border-radius: 8px;
+    transition:background 0.3;
+    font-weight:500;
+    
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+    >svg{
+        margin-right:20px;
+        height: 25px;
+        width:25px;
+    }
+
+    &:hover{
+        transition:background  0.3s;
+        background-color:#333;
+
+    }
+`;
 export const ButtonsContainer = styled.div`
     display: grid;
     place-items: center;
@@ -114,6 +141,9 @@ export const ButtonsContainer = styled.div`
     
 
     >a{
+        width:100%;
+    }
+    >button{
         width:100%;
     }
 
@@ -131,6 +161,20 @@ export const ButtonsContainer = styled.div`
             &+a{
                 margin-left:20px;
             }
+
+            &+button{
+                margin-left:20px;
+            }
+        }
+        >button{
+            &+button{
+                margin-left:20px;
+            }
+            
+            &+a{
+                margin-left:20px;
+            }
+
         }
     }
     

@@ -150,7 +150,8 @@ const Timestamps: React.FC = () => {
   return <>
     <BackToHomeButton backgroundColor='#FFA633' />
     <Head>
-      <title>Timestamps</title>
+      <title>Timestamps Converter</title>
+      <meta name="description" content="Timestamps Converter app"/>
     </Head>
     <Container>
       <h1>Convert Epoch Timestamp</h1>
