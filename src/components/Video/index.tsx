@@ -11,6 +11,7 @@ export interface IVideo {
 const Video: React.FC<IVideo> = ({width, height, src}) => {
   const videoRef = useRef(null)
   return <iframe 
+    loading="lazy"
     ref={videoRef}
     width={width}
     height={height}
