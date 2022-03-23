@@ -150,6 +150,7 @@ const Home: React.FC = () => {
           <main>
               <Profile>
                 <img
+                  loading="lazy"
                   src="https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/profile.png"
                   alt="Picture of the author"
                 />

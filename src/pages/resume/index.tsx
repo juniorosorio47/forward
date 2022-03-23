@@ -46,7 +46,8 @@ const Resume: React.FC = () => {
               <header>
                   <img
                     src="https://raw.githubusercontent.com/juniorosorio47/forward/8b0f3e76a28dd3aaee194fdbeda7b6fb5b8ed925/public/profile.png"
-                    alt="Picture of the author"
+                    alt="Picture of Dari Osorio Junior"
+                    loading="lazy"
                   />
                   <h1>Dari Osorio Junior</h1>
                   <h3>Full Stack Developer</h3>
