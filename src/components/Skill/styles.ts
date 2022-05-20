@@ -61,6 +61,7 @@ export const Container = styled.div`
     margin-bottom:20px;
     border-radius: 8px;
     background-color:rgba(30, 30, 30, 0.7);
+    border-bottom:1px solid rgba(255, 255, 255, 0.3);
 
 
 
@@ -108,7 +109,7 @@ export const YearsOfExperience = styled.div<IYearsOfExperienceProps>`
 
         @media only screen and (min-width: 768px) {
             ${({color, years}) => css`
-                width:${(100*years)/4.5}%;
+                width:${(100*years)/4}%;
             `}
         }
 
@@ -126,12 +127,14 @@ export const Info = styled.div`
 
     >img{
         width:30px;
-
+        margin-right:10px;
     }
     
     >h3{
-        font-size:14px;
-        margin-left:20px;
+    }
+
+    >p{
+        font-weight:600;
     }
 
 
