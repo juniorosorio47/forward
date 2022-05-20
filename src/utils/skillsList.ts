@@ -64,7 +64,7 @@ const skillsList = [
           name:"Spring",
           link:"https://spring.io",
           color:"#7FE96E",
-          logo:"https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/spring-logo.svg",
           years:2
         },
       ],
@@ -80,7 +80,7 @@ const skillsList = [
           name:"Docker Compose",
           link:"https://docs.docker.com/compose/",
           color:"#1396C3",
-          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/logo-docker-compose.svg",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/logo-docker-compose.png",
           years:1
         },
       ],

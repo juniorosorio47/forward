@@ -23,15 +23,48 @@ const appearFromLeft = keyframes`
     }
 `;
 
+export const ChildTechs = styled.div`
+    
+    height:100%;
+    width:100%;
+    grid-column:1/4;
+    margin-bottom:50px;
+
+    display:grid;
+    
+
+
+    >main{
+        display:grid;
+        grid-template-columns: 200px 1fr;
+        background-color:rgba(41, 41, 41, 0.7);
+        border-radius: 8px;
+        margin-top:15px;
+        padding:5px;
+
+
+        >img{ 
+            max-width:20px;
+            
+        }
+    }
+`
 export const Container = styled.div`
     display:grid;
     grid-template-columns:1fr 1fr;
     max-width:100%;
     width:100%;
-    height:80px;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:20px;
+    height:auto;
+    padding:30px;
+    padding-left:20px;
+    padding-right:20px;
+    margin-bottom:20px;
+    border-radius: 8px;
+    background-color:rgba(30, 30, 30, 0.7);
+
+
+
+    
 
     @media only screen and (min-width: 768px) {
         grid-template-columns:200px 1fr;
@@ -48,6 +81,8 @@ export const YearsOfExperience = styled.div<IYearsOfExperienceProps>`
         margin-right:10px;
         animation: ${appearFromLeft} 2s;
         height:30px;
+
+        
         
 
         
@@ -85,10 +120,13 @@ export const Info = styled.div`
     display:flex;
     place-items:center;
     width:100%;
+    padding-left:10px;
+
 
 
     >img{
         width:30px;
+
     }
     
     >h3{

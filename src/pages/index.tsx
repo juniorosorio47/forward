@@ -109,12 +109,15 @@ const Home: React.FC = () => {
               <p>Technologies</p> 
               <p>Years of experience</p>
             </div>
-            {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink}, index)=>(
+            {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink, childTechs}, index)=>(
+              
               <Skill 
                 key={index}
                 logoSrc={logoSrc}
                 name={name}
                 yearsOfExperience={yearsOfExperience}
+                // @ts-ignore
+                childTechs={childTechs}
                 color={color}
                 techLink={techLink}
               />
