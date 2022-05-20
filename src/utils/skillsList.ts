@@ -2,44 +2,56 @@ const skillsList = [
     {
       logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/javascript-icon.svg",
       name:"Javascript",
-      yearsOfExperience:4,
+      yearsOfExperience:3,
       color:"#F0DB4F",
       techLink:"https://nodejs.org",
-    },
-    {
-      logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg" ,
-      name:"React JS" ,
-      yearsOfExperience:4,
-      color:"#00D8FF",
-      techLink:"https://reactjs.org",
-    },
-    {
-      logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg" ,
-      name:"React Native" ,
-      yearsOfExperience:1,
-      color:"#61DAFB",
-      techLink:"https://reactnative.dev",
-    },
-    {
-      logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/nodejs-icon.svg" ,
-      name:"Node JS" ,
-      yearsOfExperience:4,
-      color:"#8CC84B",
-      techLink:"https://nodejs.org",
-    },
-    {
-      logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/ts-logo.svg" ,
-      name:"TypeScript" ,
-      yearsOfExperience:2,
-      color:"#3178C6",
-      techLink:"https://www.typescriptlang.org",
+      childTechs:[
+        {
+          name:"React",
+          link:"https://reactjs.org",
+          color:"#00D8FF",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg",
+          years:3
+        },
+        {
+          name:"React Native",
+          link:"https://reactnative.dev",
+          color:"#61DAFB",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg",
+          years:1
+        },
+        {
+          name:"Node JS",
+          link:"https://nodejs.org",
+          color:"#8CC84B",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/nodejs-icon.svg",
+          years:3
+        },
+        {
+          name:"TypeScript",
+          link:"https://www.typescriptlang.org",
+          color:"#3178C6",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/ts-logo.svg",
+          years:2
+        },
+
+      ],
     },
     {
       logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/python-icon.svg" ,
       name:"Python" ,
-      yearsOfExperience:3,
+      yearsOfExperience:2,
       color:"#356B99",
       techLink:"https://python.org",
+      childTechs:[
+        {
+          name:"Django",
+          link:"https://www.djangoproject.com",
+          color:"#0C4B33",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/django.svg",
+          years:2
+        },
+      ],
     },
     {
       logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/java-icon.svg" ,
@@ -47,6 +59,15 @@ const skillsList = [
       yearsOfExperience:2,
       color:"#0D8AC7",
       techLink:"https://java.com",
+      childTechs:[
+        {
+          name:"Spring",
+          link:"https://spring.io",
+          color:"#7FE96E",
+          logo:"https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg",
+          years:2
+        },
+      ],
     },
     {
       logoSrc:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/docker-icon.svg" ,
@@ -54,6 +75,15 @@ const skillsList = [
       yearsOfExperience:2,
       color:"#1396C3",
       techLink:"https://docker.com",
+      childTechs:[
+        {
+          name:"Docker Compose",
+          link:"https://docs.docker.com/compose/",
+          color:"#1396C3",
+          logo:"https://raw.githubusercontent.com/juniorosorio47/forward/main/public/logo-docker-compose.svg",
+          years:1
+        },
+      ],
     },
     
   ];
