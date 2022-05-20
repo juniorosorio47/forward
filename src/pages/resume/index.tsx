@@ -73,15 +73,16 @@ const Resume: React.FC = () => {
               <Skills>
                   <h2>Skills and Competencies:</h2>
                   <div>
-                      {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink}, index)=>(
-                          <Skill 
-                          key={index}
-                          logoSrc={logoSrc}
-                          name={name}
-                          yearsOfExperience={yearsOfExperience}
-                          color={color}
-                          techLink={techLink}
-                          />
+                      {skillsList.map(({logoSrc, name, yearsOfExperience, color, techLink, childTechs}, index)=>(
+                    <Skill 
+                        childTechs={childTechs}
+                        key={index}
+                        logoSrc={logoSrc}
+                        name={name}
+                        yearsOfExperience={yearsOfExperience}
+                        color={color}
+                        techLink={techLink}
+                    />
                       ))}
                   </div>
               </Skills>
