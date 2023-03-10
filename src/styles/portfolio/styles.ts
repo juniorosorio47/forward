@@ -1,8 +1,8 @@
 import { lighten, readableColor } from 'polished';
 import styled, { css, keyframes } from 'styled-components';
 
-interface ITagProps{
-    color?:string;
+interface ITagProps {
+    color?: string;
 }
 
 const appearFromLeft = keyframes`
@@ -386,15 +386,16 @@ export const WorkExperiences = styled.div`
     
     >main{
         width:90%;
-        display:flex;
-        flex-direction:column;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
         place-items:center;
         align-items:flex-start;
         grid-gap: 30px;
         padding-bottom:30px;
 
-        @media only screen and (min-width: 768px) {
-            flex-direction:row;
+        @media only screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+
         }
     }
 `;
