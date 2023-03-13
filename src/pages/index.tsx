@@ -176,9 +176,9 @@ const Home: React.FC = () => {
 
           <main>
             <p>
-              I'm a full-stack developer with experience in Javascript, React, React Native, and Python. I like programming, always finding a way to add programming to my work. For instance, I currently work in a server support position. Here I made internal systems to facilitate the work of the persons in the company.
+              I'm a full-stack developer with more than 4 years of experience in Javascript, React, React Native and Python. I really like programming, so I always try to make the best software possible, always looking for software quality and clean code to facilitate maintenance.
             </p>
-            <p>I'm looking for a place to work with what I love: Software Development.</p>
+            <p>Always looking forward</p>
           </main>
           <div>
             <h2>Get in touch:</h2>
