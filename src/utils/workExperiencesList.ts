@@ -1,6 +1,6 @@
 const workExperiencesList = [
     {
-        position: 'Full Developer Analyst',
+        position: 'Analyst',
         company: 'Stefanini Brasil',
         time: 'June 2022 - Today',
         description: 'Currently working at the Stefanini consulting company, as a developer, providing services to the client using the following technologies:',
