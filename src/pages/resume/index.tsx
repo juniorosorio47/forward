@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useMemo, useRef } from "react";
 import { PDFExport, savePDF } from "@progress/kendo-react-pdf";
 import { FaFileExport } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 
 import Skill from "../../components/Skill";
 import WorkCard from "../../components/WorkCard";
@@ -67,7 +68,7 @@ const Resume: React.FC = () => {
                     <div>
                         <p><b>Currently working: </b>Yes</p>
                         <p><b>Level of education: </b>Studying technologist in Systems Analysis and Development.</p>
-                        <p><b> Portfolio: </b> https://juniorosorio47.github.io/forward/ </p>
+                        <p><b> Portfolio:  </b> <a target="_blank" href="https://juniorosorio47.github.io/forward/"> <b><FiExternalLink />  https://juniorosorio47.github.io/forward/</b></a> </p>
                     </div>
                 </PersonalDetails>
                 <Skills>
