@@ -28,7 +28,7 @@ const workExperiencesList = [
         company: 'ITP - Itaipu Technological Park',
         time: 'October 2018 - April 2019',
         description: 'During my internship at the Latin American Center for Open Technologies (CELTAB), I gained valuable experience in full-stack software development. My responsibilities included working with a range of programming languages and technologies, such as:',
-        techs: ['React', 'Javascript', 'NodeJS', 'Ubuntu', 'MongoDB', 'PostgreSQL', 'Docker'],
+        techs: ['React', 'React Native', 'Javascript', 'NodeJS', 'Ubuntu', 'MongoDB', 'PostgreSQL', 'Docker'],
         companyWebSite: "https://www.pti.org.br"
     },
 ]
