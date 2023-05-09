@@ -2,7 +2,7 @@ const skillsList = [
   {
     logoSrc: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/javascript-icon.svg",
     name: "Javascript",
-    yearsOfExperience: 4,
+    yearsOfExperience: 5,
     color: "#F0DB4F",
     techLink: "https://nodejs.org",
     childTechs: [
@@ -11,7 +11,7 @@ const skillsList = [
         link: "https://reactjs.org",
         color: "#00D8FF",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg",
-        years: 4
+        years: 5
       },
       {
         name: "React Native",
@@ -25,7 +25,7 @@ const skillsList = [
         link: "https://nodejs.org",
         color: "#8CC84B",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/nodejs-icon.svg",
-        years: 3
+        years: 4
       },
       {
         name: "TypeScript",
