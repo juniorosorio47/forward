@@ -16,7 +16,8 @@ export default function Home() {
             RESUME ↗
           </a>
           <a href={`mailto:${identity.email}`} className={styles.topHire}>
-            AVAILABLE FOR REMOTE — HIRE ME →
+            <span className={styles.topHireLong}>AVAILABLE FOR REMOTE — </span>
+            HIRE ME →
           </a>
         </span>
       </header>

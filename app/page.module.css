@@ -31,10 +31,18 @@
   letter-spacing: 0.04em;
 }
 
+.topName {
+  white-space: nowrap;
+}
+
 .topLinks {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+}
+
+.topLinks a {
+  white-space: nowrap;
 }
 
 .topLinks a {
@@ -624,5 +632,16 @@
 
   .topBar {
     font-size: 0.66rem;
+    gap: 0.8rem;
+  }
+
+  .topLinks {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .topHireLong {
+    display: none;
   }
 }
