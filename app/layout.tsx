@@ -17,11 +17,11 @@ const mono = Fragment_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://juniorosorio47.github.io/forward"),
-  title: "Dari Osorio Junior — I build the checkout",
+  title: "Dari Osorio Junior · I build the checkout",
   description:
-    "Senior full-stack developer for POS terminals, self-service kiosks and the B2B SaaS behind them. React, React Native, Node and Python — shipped where people actually pay.",
+    "Senior full-stack developer for POS terminals, self-service kiosks and the B2B SaaS behind them. React, React Native, Node and Python, shipped where people actually pay.",
   openGraph: {
-    title: "Dari Osorio Junior — I build the checkout",
+    title: "Dari Osorio Junior · I build the checkout",
     description:
       "Senior full-stack developer for POS, kiosks and B2B SaaS. 7 years of React, Node and Python.",
     type: "website",
