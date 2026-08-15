@@ -13,6 +13,7 @@ export const receiptItems = [
   { qty: "6yr", item: "Node.js APIs" },
   { qty: "6yr", item: "Python · Django · FastAPI" },
   { qty: "2x", item: "Enterprise POS platforms" },
+  { qty: "1x", item: "Event-ticketing platform" },
   { qty: "1x", item: "B2B SaaS, built solo" },
 ];
 
@@ -30,7 +31,7 @@ export interface CaseStudy {
 
 export const cases: CaseStudy[] = [
   {
-    order: "#003",
+    order: "#004",
     client: "E-DEPLOY (AN IFOOD COMPANY)",
     period: "2025 — NOW",
     role: "Full Stack Developer",
@@ -45,7 +46,7 @@ export const cases: CaseStudy[] = [
     stack: ["React", "Node.js", "Python", "Grafana"],
   },
   {
-    order: "#002",
+    order: "#003",
     client: "SEU MÉTODO — SOLO",
     period: "FOUNDER & DEVELOPER",
     role: "Creator",
@@ -62,6 +63,22 @@ export const cases: CaseStudy[] = [
       { label: "VISIT LIVE ↗", href: "https://seumetodo.com" },
       { label: "WATCH DEMO ↗", href: "https://www.youtube.com/watch?v=r4aiKYsN6Pk" },
     ],
+  },
+  {
+    order: "#002",
+    client: "YES7 TICKETS — FREELANCE",
+    period: "2024 — 2026",
+    role: "Full Stack Developer",
+    title: "Tickets people pay in installments",
+    problem:
+      "Brazilian event producers needed to sell tickets online with installment payments, and run the whole operation from their pocket.",
+    work: [
+      "I built most of the customer-facing storefront of yes7tickets.net in Angular: browsing events, picking seats, paying in installments.",
+      "Shipped backend features for the ticketing and order flows in Ruby on Rails with PostgreSQL.",
+      "Built the event producer's companion app in React Native, so producers manage sales away from a desk.",
+    ],
+    stack: ["Angular", "Ruby on Rails", "PostgreSQL", "React Native"],
+    links: [{ label: "VISIT LIVE ↗", href: "https://yes7tickets.net" }],
   },
   {
     order: "#001",

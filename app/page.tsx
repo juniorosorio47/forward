@@ -103,7 +103,7 @@ export default function Home() {
         {/* ============ WORK ============ */}
         <section id="work" className={styles.section}>
           <p className={styles.sectionLabel}>ORDERS — SELECTED WORK</p>
-          <h2 className={styles.sectionTitle}>Three systems people pay through.</h2>
+          <h2 className={styles.sectionTitle}>Four systems people pay through.</h2>
 
           <div className={styles.tickets}>
             {cases.map((c) => (
