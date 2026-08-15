@@ -1,5 +1,11 @@
 import styles from "./page.module.css";
-import { identity, receiptItems, cases, storeInfo } from "@/data/content";
+import {
+  identity,
+  receiptItems,
+  cases,
+  orderHistory,
+  storeInfo,
+} from "@/data/content";
 
 export default function Home() {
   const year = new Date().getFullYear();
@@ -144,6 +150,25 @@ export default function Home() {
                 </footer>
               </article>
             ))}
+          </div>
+
+          <div className={styles.orderHistory}>
+            <p className={styles.orderHistoryLabel}>ORDER HISTORY</p>
+            <ul className={styles.orderHistoryList}>
+              {orderHistory.map((o) => (
+                <li key={o.period}>
+                  <span className={styles.orderHistoryPeriod}>{o.period}</span>
+                  <span className={styles.orderHistoryRole}>{o.role}</span>
+                  <span className={styles.orderHistoryDetail}>{o.detail}</span>
+                </li>
+              ))}
+            </ul>
+            <p className={styles.orderHistoryNote}>
+              Full history on the{" "}
+              <a href="resume.pdf" target="_blank" rel="noreferrer">
+                resume ↗
+              </a>
+            </p>
           </div>
         </section>
 

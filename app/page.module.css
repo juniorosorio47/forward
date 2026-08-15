@@ -408,6 +408,59 @@
   opacity: 0.75;
 }
 
+/* ============ ORDER HISTORY ============ */
+
+.orderHistory {
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.orderHistoryLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  padding-bottom: 0.7rem;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0.2rem;
+}
+
+.orderHistoryList {
+  list-style: none;
+}
+
+.orderHistoryList li {
+  display: grid;
+  grid-template-columns: 6.2rem 13rem 1fr;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.orderHistoryPeriod {
+  color: var(--stamp);
+}
+
+.orderHistoryDetail {
+  color: var(--ink-soft);
+}
+
+.orderHistoryNote {
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+}
+
+.orderHistoryNote a {
+  color: var(--stamp);
+  text-decoration: none;
+}
+
+.orderHistoryNote a:hover {
+  text-decoration: underline;
+}
+
 /* ============ ABOUT ============ */
 
 .aboutGrid {
@@ -624,6 +677,11 @@
 
   .aboutGrid {
     grid-template-columns: 1fr;
+  }
+
+  .orderHistoryList li {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
   }
 
   .barcode {

@@ -80,6 +80,24 @@ export const cases: CaseStudy[] = [
   },
 ];
 
+export const orderHistory = [
+  {
+    period: "2019-2021",
+    role: "Full Stack Developer",
+    detail: "MaestroTech — case management platform for the Jamaican government",
+  },
+  {
+    period: "2019-2022",
+    role: "Global IT Support",
+    detail: "Valoroso — server ops & monitoring, VOTT Platform",
+  },
+  {
+    period: "2018-2019",
+    role: "Intern Software Analyst",
+    detail: "Itaipu Technological Park (CELTAB)",
+  },
+];
+
 export const storeInfo = [
   { label: "LOCATION", value: "Foz do Iguaçu, Brazil (UTC-3)" },
   { label: "WORKS", value: "Remote — worldwide" },
