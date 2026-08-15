@@ -28,3 +28,6 @@ src/pages/Dashboard
 .next
 # yarn.lock
 gh-pages
+
+/out
+next-env.d.ts

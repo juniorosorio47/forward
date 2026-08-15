@@ -1,0 +1,80 @@
+:root {
+  --paper: oklch(96.5% 0.009 95);
+  --paper-shade: oklch(93.5% 0.011 95);
+  --paper-deep: oklch(90% 0.013 95);
+  --ink: oklch(24% 0.012 95);
+  --ink-soft: oklch(44% 0.014 95);
+  --rule: oklch(84% 0.012 95);
+  --stamp: oklch(54% 0.185 30);
+  --stamp-deep: oklch(46% 0.165 30);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--stamp);
+  color: var(--paper);
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--stamp);
+}
+
+:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  max-width: 68ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
