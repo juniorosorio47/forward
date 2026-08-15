@@ -2,7 +2,7 @@ const skillsList = [
   {
     logoSrc: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/javascript-icon.svg",
     name: "Javascript",
-    yearsOfExperience: 5,
+    yearsOfExperience: 7,
     color: "#F0DB4F",
     techLink: "https://nodejs.org",
     childTechs: [
@@ -11,28 +11,28 @@ const skillsList = [
         link: "https://reactjs.org",
         color: "#00D8FF",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg",
-        years: 5
+        years: 7
       },
       {
         name: "React Native",
         link: "https://reactnative.dev",
         color: "#61DAFB",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/reactjs-icon.svg",
-        years: 2
+        years: 5
       },
       {
         name: "Node JS",
         link: "https://nodejs.org",
         color: "#8CC84B",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/nodejs-icon.svg",
-        years: 4
+        years: 6
       },
       {
         name: "TypeScript",
         link: "https://www.typescriptlang.org",
         color: "#3178C6",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/ts-logo.svg",
-        years: 3
+        years: 5
       },
 
     ],
@@ -40,7 +40,7 @@ const skillsList = [
   {
     logoSrc: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/python-icon.svg",
     name: "Python",
-    yearsOfExperience: 4,
+    yearsOfExperience: 6,
     color: "#356B99",
     techLink: "https://python.org",
     childTechs: [
@@ -49,6 +49,13 @@ const skillsList = [
         link: "https://www.djangoproject.com",
         color: "#0C4B33",
         logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/django.svg",
+        years: 4
+      },
+      {
+        name: "FastAPI",
+        link: "https://fastapi.tiangolo.com",
+        color: "#009688",
+        logo: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/python-icon.svg",
         years: 2
       },
     ],
@@ -72,7 +79,7 @@ const skillsList = [
   {
     logoSrc: "https://raw.githubusercontent.com/juniorosorio47/forward/main/public/docker-icon.svg",
     name: "Docker",
-    yearsOfExperience: 3,
+    yearsOfExperience: 5,
     color: "#1396C3",
     techLink: "https://docker.com",
     childTechs: [

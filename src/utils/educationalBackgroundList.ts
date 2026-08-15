@@ -1,8 +1,8 @@
 const educationalBackgroundList = [
     {
-        institution: 'Uninassal',
-        course: 'Technologist in Systems Analysis',
-        time: '2021-2023 (Not finished)',
+        institution: 'UNINASSAU',
+        course: 'Technologist in Systems Analysis and Development',
+        time: '2021-2023',
         certificate: '',
     },
     {

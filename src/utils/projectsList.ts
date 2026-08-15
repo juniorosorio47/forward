@@ -1,5 +1,14 @@
 const projectsList =  [
     {
+        title:"Seu Método",
+        description:"B2B SaaS I created and launched solo, for deadline-bound service operations like labs and workshops. Replaces legacy ERPs with a Kanban workflow, automated WhatsApp notifications and a white-label mobile tracking portal. Adaptive React UI serving three contexts: high-density backoffice, touch-friendly shop floor and public portal.",
+        githubLink: null,
+        liveLink: 'https://seumetodo.com',
+        youtubeId:"r4aiKYsN6Pk",
+        tags:['React', 'B2B SaaS', 'Kanban', 'WhatsApp API', 'White-label'],
+        tagsColor:'#1E8E5A',
+    },
+    {
         title:"Do Next",
         description:"This is a ToDo aplication that you can create how many lists you want. The lists are stored in the browser local storage.",
         githubLink:'https://github.com/juniorosorio47/forward/tree/main/src/pages/donext',

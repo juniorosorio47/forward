@@ -9,7 +9,7 @@ import Video from '../../components/Video';
 interface IProjectProps{
   title: string;
   description: string;
-  githubLink: string;
+  githubLink: string | null;
   liveLink: string;
   youtubeId: string;
   tags: string[];
@@ -34,10 +34,12 @@ const ProjectCard: React.FC<IProjectProps> = ({ title, description, githubLink, 
           </TagFooter>
           <ButtonsContainer>
 
-            <ButtonLink href={githubLink} target="_blank"> 
-                <BsGithub/> 
-                Github
-            </ButtonLink>
+            {githubLink && (
+              <ButtonLink href={githubLink} target="_blank">
+                  <BsGithub/>
+                  Github
+              </ButtonLink>
+            )}
 
             <ButtonLink href={liveLink} target="_blank"> 
                 <BsLink/> 

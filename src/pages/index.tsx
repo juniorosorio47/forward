@@ -176,7 +176,7 @@ const Home: React.FC = () => {
 
           <main>
             <p>
-              I'm a full-stack developer with more than 4 years of experience in Javascript, React, React Native and Python. I really like programming, so I always try to make the best software possible, always looking for software quality and clean code to facilitate maintenance.
+              I'm a senior full-stack developer with 7 years of experience in Javascript, React, React Native, NodeJS and Python. I build embedded POS systems, self-service kiosks and B2B SaaS platforms for retail and hospitality — including Seu Método, a SaaS I created and launched solo. I care deeply about software quality, UX and accessible, maintainable code.
             </p>
             <p>Always looking forward</p>
           </main>
