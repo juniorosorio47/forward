@@ -12,6 +12,7 @@ export const receiptItems = [
   { qty: "7yr", item: "React / TypeScript" },
   { qty: "6yr", item: "Node.js APIs" },
   { qty: "6yr", item: "Python · Django · FastAPI" },
+  { qty: "2yr", item: "Ruby on Rails" },
   { qty: "2x", item: "Enterprise POS platforms" },
   { qty: "1x", item: "Event-ticketing platform" },
   { qty: "1x", item: "B2B SaaS, built solo" },

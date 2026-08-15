@@ -37,9 +37,9 @@ export default function Home() {
               I build the <span className={styles.heroAccent}>checkout</span>.
             </h1>
             <p className={styles.heroSub}>
-              POS terminals, self-service kiosks and the B2B SaaS behind them.
-              Seven years of React, React Native, Node and Python — shipped
-              where people actually pay.
+              POS terminals, self-service kiosks, event ticketing and the B2B
+              SaaS behind them. Seven years of React, React Native, Node,
+              Python and Ruby on Rails, shipped where people actually pay.
             </p>
             <div className={styles.heroActions}>
               <a href={`mailto:${identity.email}`} className={styles.btnFill}>

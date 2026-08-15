@@ -247,8 +247,8 @@
 
 .stamp {
   position: absolute;
-  right: 0.9rem;
-  bottom: 2.6rem;
+  right: 6rem;
+  bottom: 2.3rem;
   border: 3px solid var(--stamp);
   color: var(--stamp);
   font-family: var(--font-mono);
