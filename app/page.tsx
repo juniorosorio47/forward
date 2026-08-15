@@ -11,9 +11,14 @@ export default function Home() {
 
       <header className={styles.topBar}>
         <span className={styles.topName}>{identity.name.toUpperCase()}</span>
-        <a href={`mailto:${identity.email}`} className={styles.topHire}>
-          AVAILABLE FOR REMOTE — HIRE ME →
-        </a>
+        <span className={styles.topLinks}>
+          <a href="resume.pdf" target="_blank" rel="noreferrer">
+            RESUME ↗
+          </a>
+          <a href={`mailto:${identity.email}`} className={styles.topHire}>
+            AVAILABLE FOR REMOTE — HIRE ME →
+          </a>
+        </span>
       </header>
 
       <main>

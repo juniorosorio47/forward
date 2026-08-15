@@ -31,6 +31,20 @@
   letter-spacing: 0.04em;
 }
 
+.topLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.topLinks a {
+  text-decoration: none;
+}
+
+.topLinks a:hover {
+  text-decoration: underline;
+}
+
 .topHire {
   color: var(--stamp);
   text-decoration: none;
