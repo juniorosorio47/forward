@@ -228,7 +228,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
   pt: {
     langLabel: "EN",
     langHref: "../",
-    resumeHref: "../resume.pdf",
+    resumeHref: "../resume-pt.pdf",
     skipToWork: "Pular para os trabalhos",
     role: "Desenvolvedor Full Stack Sênior",
     topResume: "CURRÍCULO ↗",
